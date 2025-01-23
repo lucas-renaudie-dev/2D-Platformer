@@ -8,11 +8,9 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     public float attackCooldown = 1;
     private float timer = 100000;
-    private PlayerMovement playerMovement;
 
     private void Awake() {
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.F)) && timer > attackCooldown) {
+        if(Input.GetMouseButton(0) && timer > attackCooldown) {
             Attack();
         }
 
@@ -34,7 +32,6 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack() {
-        anim.SetTrigger("attack");
         timer = 0;
 
         fireballs[0].transform.position = firePoint.position;
