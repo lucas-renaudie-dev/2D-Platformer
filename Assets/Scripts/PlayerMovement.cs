@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalSpeed = 10;
     public Rigidbody2D myBody;
     private Animator anim;
-    private bool grounded;
+    public bool grounded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

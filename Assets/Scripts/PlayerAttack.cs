@@ -3,14 +3,15 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Transform firePoint;
+    public Transform firePoint2;
     public GameObject[] fireballs;
 
-    private Animator anim;
     public float attackCooldown = 1;
     private float timer = 100000;
+    private PlayerMovement movement;
 
-    private void Awake() {
-        anim = GetComponent<Animator>();
+    void Awake() {
+        movement = GetComponent<PlayerMovement>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +24,12 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButton(0) && timer > attackCooldown) {
-            Attack();
+            timer = 0;            
+            Attack1();
+        }
+        if (Input.GetMouseButton(1) && !movement.grounded && timer > attackCooldown) {
+            timer = 0;
+            Attack2();
         }
 
         else {
@@ -31,10 +37,13 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void Attack() {
-        timer = 0;
-
+    private void Attack1() {
         fireballs[0].transform.position = firePoint.position;
         fireballs[0].GetComponent<Projectile>().SetDirection(Mathf.Sign(-transform.localScale.x));
+    }
+
+    private void Attack2() {
+        fireballs[0].transform.position = firePoint2.position;
+        fireballs[0].GetComponent<Projectile>().SetDirection(0);
     }
 }

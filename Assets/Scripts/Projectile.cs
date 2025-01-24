@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public float attackSpeed = 10;
     private bool hit;
     private float direction;
+    private bool isVerticalAttack;
 
     private BoxCollider2D boxCollider;
     private Animator anim;
@@ -26,28 +27,44 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         if (hit) return;
-        float movementSpeed = attackSpeed * Time.deltaTime * direction;
-        transform.Translate(movementSpeed, 0, 0);
+
+        if (isVerticalAttack) {
+            float movementSpeed = attackSpeed * Time.deltaTime;
+            transform.Translate(movementSpeed, 0, 0);
+        }
+        else {
+            float movementSpeed = attackSpeed * Time.deltaTime * direction;
+            transform.Translate(movementSpeed, 0, 0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         hit = true;
         boxCollider.enabled = false;
+        
+        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0);
         anim.SetTrigger("explode");
     }
 
     public void SetDirection(float _direction) {
-        direction = _direction;
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
 
-        float localScaleX = transform.localScale.x;
-        if (Mathf.Sign(localScaleX) != _direction) {
-            localScaleX = -localScaleX;
-        }
 
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        if (_direction != 0) {
+            isVerticalAttack = false;
+            direction = _direction;
+
+            transform.localScale = new Vector3(_direction * 0.7f, transform.localScale.y, transform.localScale.z);
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0);
+        }
+        else {
+            isVerticalAttack = true;
+            direction = 1;
+            transform.localScale = new Vector3(0.7f, transform.localScale.y, transform.localScale.z);
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, -90);
+        }
     }
 
     private void Deactivate() {
