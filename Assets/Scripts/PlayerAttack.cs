@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform firePoint2;
     public GameObject[] fireballs;
 
-    public float attackCooldown = 1;
+    public float attackCooldown = 0.25f;
     private float timer = 100000;
     private PlayerMovement movement;
 
@@ -38,12 +38,23 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack1() {
-        fireballs[0].transform.position = firePoint.position;
-        fireballs[0].GetComponent<Projectile>().SetDirection(Mathf.Sign(-transform.localScale.x));
+        int x = FindFireball();
+        fireballs[x].transform.position = firePoint.position;
+        fireballs[x].GetComponent<Projectile>().SetDirection(Mathf.Sign(-transform.localScale.x));
     }
 
     private void Attack2() {
-        fireballs[0].transform.position = firePoint2.position;
-        fireballs[0].GetComponent<Projectile>().SetDirection(0);
+        int x = FindFireball();
+        fireballs[x].transform.position = firePoint2.position;
+        fireballs[x].GetComponent<Projectile>().SetDirection(0);
+    }
+
+    private int FindFireball() {
+        for (int i = 0; i < fireballs.Length; i++) {
+            if (!fireballs[i].activeInHierarchy) {
+                return i;
+            }
+        }
+        return 0;
     }
 }

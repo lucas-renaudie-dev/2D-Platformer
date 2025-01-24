@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     private bool hit;
     private float direction;
     private bool isVerticalAttack;
+    private float lifetime;
 
     private BoxCollider2D boxCollider;
     private Animator anim;
@@ -36,17 +37,23 @@ public class Projectile : MonoBehaviour
             float movementSpeed = attackSpeed * Time.deltaTime * direction;
             transform.Translate(movementSpeed, 0, 0);
         }
+
+        lifetime += Time.deltaTime;
+        if (lifetime > 5) gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        hit = true;
-        boxCollider.enabled = false;
+        if (collision.gameObject.tag != "Player") {
+            hit = true;
+            boxCollider.enabled = false;
         
-        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0);
-        anim.SetTrigger("explode");
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0);
+            anim.SetTrigger("explode");
+        }
     }
 
     public void SetDirection(float _direction) {
+        lifetime = 0;
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
