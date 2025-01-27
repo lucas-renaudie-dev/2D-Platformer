@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
    private float startingHealth = 3;
    private float currentHealth;
 
-   private void Start()
+   private void Awake()
    {
       currentHealth = startingHealth;
    }
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
              
         }
         else {
-            Die();
+            
         }
    }
 }
