@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     [SerializeField] private CameraController cam;
     [SerializeField] private GameObject doorInner;
 
+    //Room Camera (not used)
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             if (other.transform.position.x < transform.position.x) {
@@ -19,6 +20,7 @@ public class Door : MonoBehaviour
         }
     }
 
+    //Follow Player + Checkpoint (can't go back)
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player" && other.transform.position.x > transform.position.x) {
             cam.checkpointRoom = nextRoom;
