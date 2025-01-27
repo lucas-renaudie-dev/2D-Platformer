@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool isAlive = true;
     public LogicManager logic;
     public float jumpHeight = 10;
     public float horizontalSpeed = 10;
@@ -21,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAlive) {
             float horizontalInput = Input.GetAxis("Horizontal");
             myBody.linearVelocity = new Vector2(horizontalInput * horizontalSpeed, myBody.linearVelocity.y);
 
@@ -39,12 +37,6 @@ public class PlayerMovement : MonoBehaviour
             anim = GetComponent<Animator>();
             anim.SetBool("run", horizontalInput != 0);
             anim.SetBool("Grounded", grounded);
-            anim.SetBool("dead", false);
-        }
-
-        else {
-            anim.SetBool("dead", true);
-        }
     }
 
     private void Jump() {

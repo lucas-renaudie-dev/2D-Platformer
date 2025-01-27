@@ -18,6 +18,7 @@ public class Door : MonoBehaviour
                 cam.MoveToNewRoom(previousRoom);
             }
         }
+        
     }
 
     //Follow Player + Checkpoint (can't go back)
