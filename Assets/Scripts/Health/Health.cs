@@ -31,4 +31,11 @@ public class Health : MonoBehaviour
             }
         }
    }
+
+   public void AddHealth(float _health, GameObject HealthCollectible) {
+      if (currentHealth != 0 && currentHealth != startingHealth) {
+         currentHealth += 1;
+         HealthCollectible.SetActive(false);
+      }
+   }
 }

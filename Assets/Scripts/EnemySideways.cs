@@ -1,12 +1,12 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class GhostScript : MonoBehaviour
+public class EnemySideways : MonoBehaviour
 {
     private float timer = 0;
     public float maxTime = 1.5f;
     private float ghostDirection = -1;
-    public float ghostSpeed = 3;
+    public float speed = 3;
 
     // Update is called once per frame
     void Update()
@@ -21,10 +21,10 @@ public class GhostScript : MonoBehaviour
         }
 
         if (ghostDirection == -1) {
-            transform.position = transform.position + (Vector3.left * ghostSpeed) * Time.deltaTime;
+            transform.position = transform.position + (Vector3.left * speed) * Time.deltaTime;
         }
         else {
-            transform.position = transform.position + (Vector3.right * ghostSpeed) * Time.deltaTime;
+            transform.position = transform.position + (Vector3.right * speed) * Time.deltaTime;
         }
     }
 
