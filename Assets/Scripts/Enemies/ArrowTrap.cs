@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ArrowTrap : MonoBehaviour
@@ -12,7 +13,7 @@ public class ArrowTrap : MonoBehaviour
     private void Attack() {
         int tmp = FindArrow();
         arrows[tmp].transform.position = firepoint.position;
-        arrows[tmp].GetComponent<EnemyProjectile>().SetDirection(Math.Sign(transform.localScale.x));
+        arrows[tmp].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
 
     private int FindArrow() {

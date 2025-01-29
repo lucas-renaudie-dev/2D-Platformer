@@ -170,5 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d6fa9f72db3b64e8cffba79b18acd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSaw: 1
+  direction: 0
   maxTime: 1
   speed: 5
