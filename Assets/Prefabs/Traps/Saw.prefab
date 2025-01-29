@@ -171,6 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSaw: 1
-  direction: 0
+  direction: 1
   maxTime: 1.5
   speed: 6

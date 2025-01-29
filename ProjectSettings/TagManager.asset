@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - Logic
   - Fireball
+  - Door
   layers:
   - Default
   - TransparentFX

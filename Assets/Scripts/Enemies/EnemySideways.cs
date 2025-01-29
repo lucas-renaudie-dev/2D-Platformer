@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySideways : MonoBehaviour
 {
     [SerializeField] private bool isSaw;
-    [SerializeField] private float direction;
+    [SerializeField] private int direction;
     [SerializeField] private float maxTime = 1.5f;
     [SerializeField] private float speed = 3;
     private float timer = 0;

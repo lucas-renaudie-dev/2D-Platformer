@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyProjectile : EnemyDamage
 {
     [SerializeField] private float speed;
-    [SerializeField] private float direction;
     private float resetTime = 5;
     private float lifetime;
 
