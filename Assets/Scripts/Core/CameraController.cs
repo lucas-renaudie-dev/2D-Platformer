@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     }
 
     private void FollowRoom() {
-        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(checkpointRoom.position.x, transform.position.y, transform.position.z), ref velocity, speed);
+        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(checkpointRoom.position.x, checkpointRoom.position.y, transform.position.z), ref velocity, speed);
     }
     private void FollowPlayer() { //Not used currently
         if (firstRoom.position.x > player.position.x) {

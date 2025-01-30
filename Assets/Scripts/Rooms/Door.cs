@@ -4,6 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] protected Transform nextRoom;
+    [SerializeField] protected Transform prevRoom;
     [SerializeField] protected CameraController cam;
     [SerializeField] private GameObject doorInner;
 
@@ -12,6 +13,9 @@ public class Door : MonoBehaviour
         if (other.tag == "Player" && other.transform.position.x > transform.position.x) {
             cam.MoveToNewRoom(nextRoom);
             doorInner.SetActive(true);
+
+            nextRoom.GetComponent<Room>().ActivateRoom(true);
+            prevRoom.GetComponent<Room>().ActivateRoom(false);
         }
     }
 }
