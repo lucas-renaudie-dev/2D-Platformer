@@ -11,6 +11,7 @@ TagManager:
   - Logic
   - Fireball
   - Door
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

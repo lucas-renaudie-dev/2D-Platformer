@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CheckpointScript : MonoBehaviour
+public class NextRoomScript : MonoBehaviour
 {
     private Animator anim;
     private Collider2D collider;
-    private bool checkpointPassed = false;
+    private bool signPassed = false;
     [SerializeField] private Transform checkpoint; //TODO: set the new checkpoint to be the next room
     [SerializeField] private LogicManager logic;
 
@@ -16,11 +16,11 @@ public class CheckpointScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && !checkpointPassed)
+        if (other.gameObject.tag == "Player" && !signPassed)
         {
-            anim.SetTrigger("checkpointPassed");
+            anim.SetTrigger("signPassed");
             collider.enabled = false;
-            checkpointPassed = true;
+            signPassed = true;
 
             logic.setRespawnPoint(checkpoint);
         }
