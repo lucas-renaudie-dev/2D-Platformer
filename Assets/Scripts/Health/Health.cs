@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -27,30 +28,38 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0) {
             anim.SetBool("Grounded", true);
-            StartCoroutine(Invulnerability());
+            StartCoroutine(InvulnerabilityHurt());
         }
         else {
             if (!dead) {
-               //TODO: Deactivate all attached component classes
+               //TODO: Deactivate all attached component classes ()
                GetComponent<PlayerMovement>().enabled = false;
 
                anim.SetBool("Grounded", true);
                anim.SetTrigger("dead");
-
                dead = true;
-               logic.gameOver();
+
+               if (GetComponent<PlayerRespawn>().checkpointExists) {
+                  GetComponent<PlayerRespawn>().StartRespawn();
+               }
+               else {
+                  //logic.gameOver();
+               }
             }
         }
    }
 
    public void AddHealth(float _health, GameObject HealthCollectible) {
-      if (currentHealth != 0 && currentHealth != startingHealth) {
+      if (currentHealth != 0 && currentHealth != startingHealth && HealthCollectible != null) { //Health pickup case
          currentHealth += 1;
          HealthCollectible.SetActive(false);
       }
+      else if (dead == true && HealthCollectible == null) { //Respawn case
+         currentHealth = _health;
+      }
    }
 
-   private IEnumerator Invulnerability() {
+   private IEnumerator InvulnerabilityHurt() { //invulnerability after taking damage
       anim.SetBool("hurt", true);
       Physics2D.IgnoreLayerCollision(9, 10, true);
       for (int i = 0; i < numberOfFlashes; i++) {
@@ -61,5 +70,36 @@ public class Health : MonoBehaviour
       }
       Physics2D.IgnoreLayerCollision(9, 10, false);
       anim.SetBool("hurt", false);
+   }
+
+   private IEnumerator InvulnerabilityRespawn() { //invulnerability after respawn
+      GetComponent<PlayerMovement>().enabled = false;
+      Physics2D.IgnoreLayerCollision(9, 10, true);
+      for (int i = 0; i < numberOfFlashes; i++) {
+         sprite.color = new Color(1, 0, 0, 0.5f);
+         yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+         sprite.color = Color.white;
+         yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+      }
+      Physics2D.IgnoreLayerCollision(9, 10, false);
+      GetComponent<PlayerMovement>().enabled = true;
+   }
+
+   private IEnumerator NoMoving() {
+      yield return new WaitForSeconds(1.5f);
+   }
+
+   public void Respawn() {
+      AddHealth(startingHealth, null);
+      dead = false;
+
+      anim.ResetTrigger("dead");
+      anim.Play("Idle");
+      anim.SetBool("Grounded", true);
+      anim.SetBool("run", false);
+      StartCoroutine(InvulnerabilityRespawn()); //optional
+
+      //TODO: Activate all attached component classes (checkpoints vid, 7:45)
+      //GetComponent<PlayerMovement>().enabled = true;
    }
 }

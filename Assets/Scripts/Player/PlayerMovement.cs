@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public LogicManager logic;
     public float jumpHeight = 10;
     public float horizontalSpeed = 10;
     public Rigidbody2D myBody;
@@ -14,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManager>();
     }
 
     // Update is called once per frame
