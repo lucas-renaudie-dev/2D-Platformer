@@ -34,20 +34,25 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
 
+            if (Input.GetKeyUp(KeyCode.Space) && myBody.linearVelocity.y > 0) {
+                myBody.linearVelocity = new Vector2(myBody.linearVelocity.x, myBody.linearVelocity.y * 0.5f);
+            }
+
             anim = GetComponent<Animator>();
             anim.SetBool("run", horizontalInput != 0);
-            anim.SetBool("Grounded", grounded);
     }
 
     private void Jump() {
         myBody.linearVelocity = Vector2.up * jumpHeight;
-        anim.SetTrigger("Jump");
         grounded = false;
+        anim.SetBool("Grounded", grounded);
+        //SoundManager.instance.PlaySound(jumpSound);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Ground") {
             grounded = true;
+            anim.SetBool("Grounded", grounded);
         }
     }
 }

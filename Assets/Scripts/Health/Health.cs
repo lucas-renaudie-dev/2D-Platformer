@@ -26,14 +26,18 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
         if (currentHealth > 0) {
-            anim.SetTrigger("hurt");
+            anim.SetBool("Grounded", true);
             StartCoroutine(Invulnerability());
         }
         else {
             if (!dead) {
+               //TODO: Deactivate all attached component classes
                GetComponent<PlayerMovement>().enabled = false;
-               dead = true;
+
+               anim.SetBool("Grounded", true);
                anim.SetTrigger("dead");
+
+               dead = true;
                logic.gameOver();
             }
         }
@@ -47,6 +51,7 @@ public class Health : MonoBehaviour
    }
 
    private IEnumerator Invulnerability() {
+      anim.SetBool("hurt", true);
       Physics2D.IgnoreLayerCollision(9, 10, true);
       for (int i = 0; i < numberOfFlashes; i++) {
          sprite.color = new Color(1, 0, 0, 0.5f);
@@ -55,5 +60,6 @@ public class Health : MonoBehaviour
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
       }
       Physics2D.IgnoreLayerCollision(9, 10, false);
+      anim.SetBool("hurt", false);
    }
 }
