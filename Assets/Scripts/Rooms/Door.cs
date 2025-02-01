@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     [SerializeField] protected Transform nextRoom;
     [SerializeField] protected Transform prevRoom;
     [SerializeField] protected CameraController cam;
-    [SerializeField] private GameObject doorInner;
+    public GameObject doorInner;
 
     //Camera moves to new room + sets checkpoint (can't go back)
     private void OnTriggerExit2D(Collider2D other) {

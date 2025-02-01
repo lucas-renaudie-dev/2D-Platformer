@@ -85,10 +85,6 @@ public class Health : MonoBehaviour
       GetComponent<PlayerMovement>().enabled = true;
    }
 
-   private IEnumerator NoMoving() {
-      yield return new WaitForSeconds(1.5f);
-   }
-
    public void Respawn() {
       AddHealth(startingHealth, null);
       dead = false;

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class LogicManager : MonoBehaviour
 {
-    [SerializeField] private Transform respawnPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void gameOver() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -24,9 +23,5 @@ public class LogicManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-
-    public void setRespawnPoint(Transform checkpoint) {
-        respawnPoint = checkpoint;
     }
 }

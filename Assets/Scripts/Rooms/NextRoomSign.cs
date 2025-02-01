@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class NextRoomScript : MonoBehaviour
+public class NextRoomSign : MonoBehaviour
 {
     private Animator anim;
     private Collider2D collider;
-    private bool signPassed = false;
-    [SerializeField] private Transform checkpoint; //TODO: set the new checkpoint to be the next room
-    [SerializeField] private LogicManager logic;
+    public bool signPassed = false;
 
     void Start()
     {
@@ -21,8 +19,6 @@ public class NextRoomScript : MonoBehaviour
             anim.SetTrigger("signPassed");
             collider.enabled = false;
             signPassed = true;
-
-            logic.setRespawnPoint(checkpoint);
         }
     }
 }
