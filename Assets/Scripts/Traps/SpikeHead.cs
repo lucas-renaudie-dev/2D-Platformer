@@ -48,6 +48,8 @@ public class SpikeHead : EnemyDamage
         
             if (hit.collider != null && !attacking) {
                 destination = directions[i];
+                Debug.Log("destination: " + i);
+                Debug.Log("direction: " + directions[i]);
                 attacking = true;
                 checkTimer = 0;
             }

@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
             if (!dead) {
                //TODO: Deactivate all attached component classes ()
                GetComponent<PlayerMovement>().enabled = false;
+               //Physics2D.IgnoreLayerCollision(9, 10, true);
 
                anim.SetBool("Grounded", true);
                anim.SetTrigger("dead");
