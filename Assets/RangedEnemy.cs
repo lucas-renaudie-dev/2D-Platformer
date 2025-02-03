@@ -52,6 +52,7 @@ public class RangedEnemy : MonoBehaviour
     }
 
     private int FindFireball() {
+        
         for (int i = 0; i < fireballs.Length; i++) {
             if (!fireballs[i].activeInHierarchy) {
                 return i;

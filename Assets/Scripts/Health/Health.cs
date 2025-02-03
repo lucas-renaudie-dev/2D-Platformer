@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
    [SerializeField] private int numberOfFlashes;
    private SpriteRenderer sprite;
 
+   [Header("Components")]
+   [SerializeField] private Behaviour[] components;
+
    private void Awake()
    {
       currentHealth = startingHealth;
@@ -27,21 +30,16 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
         if (currentHealth > 0) {
-            anim.SetBool("Grounded", true);
+            //anim.SetBool("Grounded", true); uncomment if want a seperate animation for hurt
             StartCoroutine(InvulnerabilityHurt());
         }
         else {
             if (!dead) {
                //TODO: Deactivate all attached component classes ()
 
-               if(GetComponent<PlayerMovement>() != null)
-                  GetComponent<PlayerMovement>().enabled = false;
-               
-               if(GetComponentInParent<EnemyPatroll>() != null)
-                  GetComponentInParent<EnemyPatroll>().enabled = false;
-               
-               if(GetComponent<MeleeEnemy>() != null)
-                  GetComponent<MeleeEnemy>().enabled = false;
+               foreach (Behaviour component in components) {
+                  component.enabled = false;
+               }
 
                if (gameObject.tag == "Player") {
                   anim.SetBool("Grounded", true);
@@ -112,5 +110,9 @@ public class Health : MonoBehaviour
 
       //TODO: Activate all attached component classes (checkpoints vid, 7:45)
       //GetComponent<PlayerMovement>().enabled = true;
+   }
+
+   private void Deactivate() {
+      gameObject.SetActive(false);
    }
 }
