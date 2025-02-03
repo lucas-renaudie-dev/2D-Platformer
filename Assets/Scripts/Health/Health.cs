@@ -33,18 +33,32 @@ public class Health : MonoBehaviour
         else {
             if (!dead) {
                //TODO: Deactivate all attached component classes ()
-               GetComponent<PlayerMovement>().enabled = false;
-               //Physics2D.IgnoreLayerCollision(9, 10, true);
 
-               anim.SetBool("Grounded", true);
-               anim.SetTrigger("dead");
-               dead = true;
+               if(GetComponent<PlayerMovement>() != null)
+                  GetComponent<PlayerMovement>().enabled = false;
+               
+               if(GetComponentInParent<EnemyPatroll>() != null)
+                  GetComponentInParent<EnemyPatroll>().enabled = false;
+               
+               if(GetComponent<MeleeEnemy>() != null)
+                  GetComponent<MeleeEnemy>().enabled = false;
 
-               if (GetComponent<PlayerRespawn>().checkpointExists) {
-                  GetComponent<PlayerRespawn>().StartRespawn();
+               if (gameObject.tag == "Player") {
+                  anim.SetBool("Grounded", true);
+                  anim.SetTrigger("dead");
+                  dead = true;
+
+                  if (GetComponent<PlayerRespawn>().checkpointExists) {
+                     GetComponent<PlayerRespawn>().StartRespawn();
+                  }
+                  else {
+                     //logic.gameOver();
+                  }
                }
+
                else {
-                  //logic.gameOver();
+                  anim.SetTrigger("dead");
+                  dead = true;
                }
             }
         }
@@ -61,7 +75,7 @@ public class Health : MonoBehaviour
    }
 
    private IEnumerator InvulnerabilityHurt() { //invulnerability after taking damage
-      anim.SetBool("hurt", true);
+      //anim.SetBool("hurt", true);
       Physics2D.IgnoreLayerCollision(9, 10, true);
       for (int i = 0; i < numberOfFlashes; i++) {
          sprite.color = new Color(1, 0, 0, 0.5f);
@@ -70,7 +84,7 @@ public class Health : MonoBehaviour
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
       }
       Physics2D.IgnoreLayerCollision(9, 10, false);
-      anim.SetBool("hurt", false);
+      //anim.SetBool("hurt", false);
    }
 
    private IEnumerator InvulnerabilityRespawn() { //invulnerability after respawn

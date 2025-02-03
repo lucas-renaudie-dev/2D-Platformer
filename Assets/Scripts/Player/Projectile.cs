@@ -49,6 +49,10 @@ public class Projectile : MonoBehaviour
         
             transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, 0);
             anim.SetTrigger("explode");
+
+            if (collision.tag == "Enemy") {
+                collision.GetComponent<Health>().TakeDamage(1);
+            }
         }
     }
 

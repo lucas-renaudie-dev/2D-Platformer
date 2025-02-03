@@ -5,15 +5,27 @@ public class EnemyProjectile : EnemyDamage
     [SerializeField] private float speed;
     private float resetTime = 5;
     private float lifetime;
+    private Animator anim;
+    private bool hit;
+    private BoxCollider2D coll;
+    private void Awake() {
+        anim = GetComponent<Animator>();
+        coll = GetComponent<BoxCollider2D>();
+    }
 
     public void ActivateProjectile()
     {
-        lifetime = 0;
         gameObject.SetActive(true);
-
+        hit = false;
+        coll.enabled = true;
+        lifetime = 0;
     }
 
     private void Update() {
+        if (hit) {
+            return;
+        }
+
         float movementSpeed = speed * Time.deltaTime;
 
         //LEFT: ArrowTrap z rotation 0 and x scale -1
@@ -30,8 +42,21 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision) {
         base.OnTriggerEnter2D(collision); //execute logic from parent script first
+        
         if (collision.tag != "Enemy" && collision.tag != "Fireball" && collision.tag != "Coin") {
-            gameObject.SetActive(false);
+            hit = true;
+            coll.enabled = false;
+
+            if (anim != null) {
+                anim.SetTrigger("explode"); //fireball
+            }
+            else {
+                gameObject.SetActive(false); //arrow
+            }
         }
+    }
+
+    private void Deactivate() {
+        gameObject.SetActive(false);
     }
 }
