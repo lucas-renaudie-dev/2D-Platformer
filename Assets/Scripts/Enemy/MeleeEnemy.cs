@@ -14,24 +14,29 @@ public class MeleeEnemy : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private LayerMask playerLayer;
+    private Health playerHealth;
+
+    [Header("Attack Sound")]
+    [SerializeField] private AudioClip attackSound;
 
     //References
     private float cooldownTimer = Mathf.Infinity;
     private Animator anim;
-    private Health playerHealth;
     private EnemyPatroll enemyPatroll;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         enemyPatroll = GetComponentInParent<EnemyPatroll>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
     }
     private void Update() {
         cooldownTimer += Time.deltaTime;
 
-        if (cooldownTimer >= attackCooldown) {
+        if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0) {
             if (PlayerInSight()) {
                 cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");
+                SoundManager.instance.PlaySound(attackSound);
             }
         }
 
@@ -44,10 +49,6 @@ public class MeleeEnemy : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(hitbox.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, 
         new Vector3(hitbox.bounds.size.x * range, hitbox.bounds.size.y, hitbox.bounds.size.z), 
         0, Vector2.left, 0, playerLayer);
-
-        if (hit.collider != null) {
-            playerHealth = hit.collider.GetComponent<Health>();
-        }
 
         return hit.collider != null;
     }

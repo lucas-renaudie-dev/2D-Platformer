@@ -185,6 +185,7 @@ MonoBehaviour:
   horizontalSpeed: 10
   myBody: {fileID: 5153031430722628579}
   grounded: 0
+  jumpSound: {fileID: 8300000, guid: 6ba54a6bc34b99648b0236b7e9b5981d, type: 3}
 --- !u!95 &2166388464080868550
 Animator:
   serializedVersion: 7
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0aa941eef87b1489a2543f5cc87510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireballSound: {fileID: 8300000, guid: 3301b8f2c51e3f04384355dec1c1c162, type: 3}
   firePoint: {fileID: 5029082863527213448}
   firePoint2: {fileID: 7902517964592599420}
   fireballs:
@@ -252,6 +254,8 @@ MonoBehaviour:
   components:
   - {fileID: 6904221319512694117}
   - {fileID: 2721403990381703146}
+  deathSound: {fileID: 8300000, guid: 4682eb3d0ec3edb4cba9aa08944a1a66, type: 3}
+  hurtSound: {fileID: 8300000, guid: 710a442913ff8c1478d3f8036311dda4, type: 3}
 --- !u!114 &93383648451283794
 MonoBehaviour:
   m_ObjectHideFlags: 0

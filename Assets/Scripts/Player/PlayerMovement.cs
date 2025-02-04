@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float jumpHeight = 10;
-    public float horizontalSpeed = 10;
+    [SerializeField] private float jumpHeight = 10;
+    [SerializeField] private float horizontalSpeed = 10;
     public Rigidbody2D myBody;
     private Animator anim;
     public bool grounded;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioClip jumpSound;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && grounded) {
                 Jump();
+                SoundManager.instance.PlaySound(jumpSound);
             }
 
             if (Input.GetKeyUp(KeyCode.Space) && myBody.linearVelocity.y > 0) {

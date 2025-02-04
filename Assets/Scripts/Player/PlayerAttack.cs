@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Transform firePoint;
-    public Transform firePoint2;
+    [SerializeField] private AudioClip fireballSound;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePoint2;
     public GameObject[] fireballs;
 
     public float attackCooldown = 0.25f;
@@ -38,12 +39,14 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack1() {
+        SoundManager.instance.PlaySound(fireballSound);
         int x = FindFireball();
         fireballs[x].transform.position = firePoint.position;
         fireballs[x].GetComponent<Projectile>().SetDirection(Mathf.Sign(-transform.localScale.x));
     }
 
     private void Attack2() {
+        SoundManager.instance.PlaySound(fireballSound);
         int x = FindFireball();
         fireballs[x].transform.position = firePoint2.position;
         fireballs[x].GetComponent<Projectile>().SetDirection(0);

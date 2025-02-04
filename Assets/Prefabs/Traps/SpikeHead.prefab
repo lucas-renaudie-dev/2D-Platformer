@@ -182,3 +182,4 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  impactSound: {fileID: 8300000, guid: ae3d213f2ca85da4ca6dd29591138073, type: 3}

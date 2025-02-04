@@ -12,6 +12,7 @@ TagManager:
   - Fireball
   - Door
   - Checkpoint
+  - NextRoomSign
   layers:
   - Default
   - TransparentFX

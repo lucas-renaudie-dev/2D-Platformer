@@ -19,6 +19,10 @@ public class Health : MonoBehaviour
    [Header("Components")]
    [SerializeField] private Behaviour[] components;
 
+   [Header("Sounds")]
+   [SerializeField] private AudioClip deathSound;
+   [SerializeField] private AudioClip hurtSound;
+
    private void Awake()
    {
       currentHealth = startingHealth;
@@ -32,6 +36,7 @@ public class Health : MonoBehaviour
         if (currentHealth > 0) {
             //anim.SetBool("Grounded", true); uncomment if want a seperate animation for hurt
             StartCoroutine(InvulnerabilityHurt());
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else {
             if (!dead) {
@@ -41,10 +46,12 @@ public class Health : MonoBehaviour
                   component.enabled = false;
                }
 
-               if (gameObject.tag == "Player") {
+               if (gameObject.tag == "Player") { //Player death
                   anim.SetBool("Grounded", true);
                   anim.SetTrigger("dead");
                   dead = true;
+                  SoundManager.instance.PlaySound(deathSound);
+
 
                   if (GetComponent<PlayerRespawn>().checkpointExists) {
                      GetComponent<PlayerRespawn>().StartRespawn();
@@ -54,9 +61,10 @@ public class Health : MonoBehaviour
                   }
                }
 
-               else {
+               else { //Enemy death
                   anim.SetTrigger("dead");
                   dead = true;
+                  SoundManager.instance.PlaySound(deathSound);
                }
             }
         }
