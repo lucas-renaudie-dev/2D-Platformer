@@ -23,11 +23,14 @@ public class Health : MonoBehaviour
    [SerializeField] private AudioClip deathSound;
    [SerializeField] private AudioClip hurtSound;
 
+   private UIManager uiManager;
+
    private void Awake()
    {
       currentHealth = startingHealth;
       anim = GetComponent<Animator>();
       sprite = GetComponent<SpriteRenderer>();
+      uiManager = FindFirstObjectByType<UIManager>();
    }
 
    public void TakeDamage(float _damage) {
@@ -57,7 +60,7 @@ public class Health : MonoBehaviour
                      GetComponent<PlayerRespawn>().StartRespawn();
                   }
                   else {
-                     //logic.gameOver();
+                     uiManager.GameOver();
                   }
                }
 
