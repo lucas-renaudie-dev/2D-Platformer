@@ -36,10 +36,11 @@ public class Health : MonoBehaviour
    public void TakeDamage(float _damage) {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
+        SoundManager.instance.PlaySound(hurtSound);
+
         if (currentHealth > 0) {
             //anim.SetBool("Grounded", true); uncomment if want a seperate animation for hurt
             StartCoroutine(InvulnerabilityHurt());
-            SoundManager.instance.PlaySound(hurtSound);
         }
         else {
             if (!dead) {
@@ -53,10 +54,9 @@ public class Health : MonoBehaviour
                   anim.SetBool("Grounded", true);
                   anim.SetTrigger("dead");
                   dead = true;
-                  SoundManager.instance.PlaySound(deathSound);
-
 
                   if (GetComponent<PlayerRespawn>().checkpointExists) {
+                     SoundManager.instance.PlaySound(deathSound);
                      GetComponent<PlayerRespawn>().StartRespawn();
                   }
                   else {
