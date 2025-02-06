@@ -133,6 +133,7 @@ MonoBehaviour:
   components:
   - {fileID: 7658832713210818611}
   - {fileID: 6553366930312150919}
+  - {fileID: 3913458609815618875, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
   deathSound: {fileID: 8300000, guid: 4682eb3d0ec3edb4cba9aa08944a1a66, type: 3}
   hurtSound: {fileID: 8300000, guid: 710a442913ff8c1478d3f8036311dda4, type: 3}
 --- !u!114 &7658832713210818611
@@ -155,7 +156,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  playerHealth: {fileID: 2554790246646328829, guid: a817a20859db6534695a90e899f4bcdf, type: 3}
   attackSound: {fileID: 8300000, guid: 4910037ca6ff5244b9d3e4a5027dc4ed, type: 3}
 --- !u!61 &7974111090896200462
 BoxCollider2D:

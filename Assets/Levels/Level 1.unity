@@ -1060,6 +1060,7 @@ GameObject:
   - component: {fileID: 115082471}
   - component: {fileID: 115082470}
   - component: {fileID: 115082469}
+  - component: {fileID: 115082474}
   m_Layer: 5
   m_Name: MUSIC
   m_TagString: Untagged
@@ -1214,6 +1215,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115082467}
   m_CullTransparentMesh: 1
+--- !u!114 &115082474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115082467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bbc4498e31d7e46a8a6a12c31027dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeName: musicVolume
+  textIntro: 'MUSIC: '
 --- !u!1 &119300036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5285,7 @@ GameObject:
   - component: {fileID: 685748179}
   - component: {fileID: 685748178}
   - component: {fileID: 685748177}
+  - component: {fileID: 685748182}
   m_Layer: 5
   m_Name: VOLUME
   m_TagString: Untagged
@@ -5424,6 +5440,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685748175}
   m_CullTransparentMesh: 1
+--- !u!114 &685748182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685748175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bbc4498e31d7e46a8a6a12c31027dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeName: soundVolume
+  textIntro: 'SOUNDS: '
 --- !u!1 &689707999
 GameObject:
   m_ObjectHideFlags: 0
@@ -11871,6 +11901,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1638307289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3913458609815618875, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+  m_PrefabInstance: {fileID: 2128891586522195575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b0a26c4f23c2b488e8769163f50c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1641227937
 GameObject:
   m_ObjectHideFlags: 0
@@ -15456,6 +15497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6714123345068342094, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: 'components.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1638307289}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -9,13 +9,17 @@ public class UIManager : MonoBehaviour
 
     [Header ("Pause")]
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private AudioClip pauseSound;
+    //[SerializeField] private AudioClip unpauseSound;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOverScreen.activeInHierarchy) {
             if (pauseScreen.activeInHierarchy) {
+                SoundManager.instance.PlaySound(pauseSound); //SoundManager.instance.PlaySound(unpauseSound);
                 PauseGame(false);
             }
             else {
+                SoundManager.instance.PlaySound(pauseSound);
                 PauseGame(true);    
             }
         }
@@ -27,11 +31,13 @@ public class UIManager : MonoBehaviour
     
     #region Game Over
     public void GameOver() {
+        SoundManager.instance.StopMusic();
         SoundManager.instance.PlaySound(gameOverSound);
         gameOverScreen.SetActive(true);
     }
 
     public void Restart() {
+        SoundManager.instance.PlayMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -52,6 +58,13 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame(bool status) {
         pauseScreen.SetActive(status);
+
+        if (status) {
+            Time.timeScale = 0f;
+        }
+        else {
+            Time.timeScale = 1f;
+        }
     }
 
     public void SoundVolume() {

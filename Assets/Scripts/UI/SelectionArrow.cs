@@ -5,6 +5,7 @@ public class SelectionArrow : MonoBehaviour
 {
     [SerializeField] private RectTransform[] options;
     [SerializeField] private AudioClip changeSound;
+    [SerializeField] private AudioClip gameStartSound;
     [SerializeField] private AudioClip interactSound;
 
     private RectTransform rect;
@@ -42,7 +43,10 @@ public class SelectionArrow : MonoBehaviour
     }
 
     private void Interact() {
-        SoundManager.instance.PlaySound(interactSound);
+        if (options[currentPosition].GetComponent<Text>().text == "RESTART") //|| options[currentPosition].GetComponent<Text>().text == "RESUME"
+            SoundManager.instance.PlaySound(gameStartSound);
+        else
+            SoundManager.instance.PlaySound(interactSound);
 
         options[currentPosition].GetComponent<Button>().onClick.Invoke();
     }
