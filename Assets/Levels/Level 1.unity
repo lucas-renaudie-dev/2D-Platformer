@@ -5271,6 +5271,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 689707999}
   gameOverSound: {fileID: 8300000, guid: 3eea7a9cbed39ed4eb601ff46ad348ca, type: 3}
   pauseScreen: {fileID: 503611884}
+  pauseSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
 --- !u!1 &685748175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7058,7 +7059,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 826b32d87daeb7d40ba99897f012a3d0, type: 3}
   m_Resource: {fileID: 8300000, guid: 826b32d87daeb7d40ba99897f012a3d0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
@@ -10818,7 +10819,8 @@ MonoBehaviour:
   - {fileID: 375360011}
   - {fileID: 1883399166}
   changeSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
-  interactSound: {fileID: 8300000, guid: 280f65269bf228345aa2d2942ae62443, type: 3}
+  gameStartSound: {fileID: 8300000, guid: 280f65269bf228345aa2d2942ae62443, type: 3}
+  interactSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
 --- !u!114 &1516848062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13939,7 +13941,8 @@ MonoBehaviour:
   - {fileID: 1766671028}
   - {fileID: 1513590740}
   changeSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
-  interactSound: {fileID: 8300000, guid: 280f65269bf228345aa2d2942ae62443, type: 3}
+  gameStartSound: {fileID: 8300000, guid: 280f65269bf228345aa2d2942ae62443, type: 3}
+  interactSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
 --- !u!114 &1921918945
 MonoBehaviour:
   m_ObjectHideFlags: 0
