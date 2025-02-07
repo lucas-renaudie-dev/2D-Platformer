@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour
     [Header ("Pause")]
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private AudioClip pauseSound;
+
+    [Header ("Main Menu")]
+    [SerializeField] private GameObject mainMenuScreen;
+    [SerializeField] private DifficultyScript script;
+
     //[SerializeField] private AudioClip unpauseSound;
 
     private void Update() {
@@ -27,6 +32,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake() {
         gameOverScreen.SetActive(false);
+        pauseScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
     }
     
     #region Game Over
@@ -75,5 +82,14 @@ public class UIManager : MonoBehaviour
         SoundManager.instance.ChangeMusicVolume(0.2f);
     }
 
+    #endregion
+
+    #region Main Menu
+    public void Play() {
+        SceneManager.LoadScene(1);
+    }
+    public void Difficulty() {
+        script.ChangeDifficulty();
+    }
     #endregion
 }
