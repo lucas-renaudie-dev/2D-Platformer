@@ -11,6 +11,7 @@ public class MainMenuUI : MonoBehaviour
     
     public void Play() {
         SceneManager.LoadSceneAsync(1);
+        Time.timeScale = 1f;
     }
 
     public void Quit() {
