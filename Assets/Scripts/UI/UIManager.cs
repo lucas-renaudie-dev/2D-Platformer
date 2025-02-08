@@ -11,8 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private AudioClip pauseSound;
 
-    [Header ("Main Menu")]
-    [SerializeField] private GameObject mainMenuScreen;
     [SerializeField] private DifficultyScript script;
 
     //[SerializeField] private AudioClip unpauseSound;
@@ -33,7 +31,6 @@ public class UIManager : MonoBehaviour
     private void Awake() {
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
-        mainMenuScreen.SetActive(true);
     }
     
     #region Game Over

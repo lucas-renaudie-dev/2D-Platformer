@@ -617,8 +617,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 693267262}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
         m_MethodName: Difficulty
         m_Mode: 1
         m_Arguments:
@@ -1257,7 +1257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &693267257
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1355,8 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf82eaca6c8bb7848862eb525c259e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuScreen: {fileID: 0}
-  script: {fileID: 0}
+  script: {fileID: 353406695}
 --- !u!1 &829607870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,8 +1795,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 693267262}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -1899,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1200484328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1938,7 +1937,6 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: 3eea7a9cbed39ed4eb601ff46ad348ca, type: 3}
   pauseScreen: {fileID: 1588224867}
   pauseSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
-  mainMenuScreen: {fileID: 0}
   script: {fileID: 0}
 --- !u!114 &1200484330
 MonoBehaviour:
@@ -3087,8 +3085,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 693267262}
+        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
