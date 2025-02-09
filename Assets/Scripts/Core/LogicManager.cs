@@ -5,15 +5,17 @@ public class LogicManager : MonoBehaviour
 {
     
     //TODO: 
-    //"Play" (start game sound)
-
-    //Easy mode: checkpoints, 3 lives
-    //Hard mode: no checkpoints, 3 lives
-    //Impossible mode: no checkpoints, 1 life
-
+    //Chill music for main menu and game music when start/restart game
+    //lower volume of game over sound
     //"Level complete !" screen with number of coins, Main Menu and Quit buttons
 
+    //Main Menu screen with coins, hearts, fireballs, arrows, enemies, spike traps, etc. 
+    //player idle next to title
+    //better background image
+
     //Fix room trap reset (checkpoint? doors?)
+
+    //Create game!
     
     private void Update() {
         if (Input.GetKeyDown(KeyCode.R)) {

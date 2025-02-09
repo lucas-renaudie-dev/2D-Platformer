@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void MainMenu() {
+        SoundManager.instance.StopMusic();
+        SoundManager.instance.PlayMenuMusic();
         SceneManager.LoadScene(0);
     }
 
@@ -82,9 +84,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Main Menu
-    public void Play() {
-        SceneManager.LoadScene(1);
-    }
     public void Difficulty() {
         script.ChangeDifficulty();
     }

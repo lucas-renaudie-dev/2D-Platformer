@@ -16,7 +16,7 @@ public class SelectionArrow : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 0) {
             GetComponent<Image>().enabled = false;   
-            options[currentPosition].GetComponent<Text>().color = Color.green;         
+            options[currentPosition].GetComponent<Text>().color = new Color32(99, 180, 74, 255);        
         }
         else {
             GetComponent<Image>().enabled = true;        
@@ -40,8 +40,9 @@ public class SelectionArrow : MonoBehaviour
     private void ChangePosition(int _change) {
         currentPosition += _change;
 
-        if (_change != 0)
+        if (_change != 0) {
             SoundManager.instance.PlaySound(changeSound);
+        }
 
         if (currentPosition < 0)
             currentPosition = options.Length - 1;
@@ -51,11 +52,11 @@ public class SelectionArrow : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 0)
             for (int i=0; i<options.Length; i++) {
-            if (i==currentPosition)
-                options[i].GetComponent<Text>().color = Color.green;    
-            else   
-                options[i].GetComponent<Text>().color = Color.white;    
-            }
+                if (i==currentPosition)
+                    options[i].GetComponent<Text>().color = new Color32(99, 180, 74, 255);   
+                else   
+                    options[i].GetComponent<Text>().color = Color.white;    
+                }
         else
             rect.position = new Vector3(rect.position.x, options[currentPosition].position.y, 0);
     }

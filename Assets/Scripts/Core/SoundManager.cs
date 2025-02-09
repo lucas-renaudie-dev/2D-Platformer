@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance {get; private set;}
     private AudioSource soundSource;
     private AudioSource musicSource;
+    private AudioSource menuMusicSource;
 
     private void Awake(){
         soundSource = GetComponent<AudioSource>();
         musicSource = transform.GetChild(0).GetComponent<AudioSource>();
+        menuMusicSource = transform.GetChild(1).GetComponent<AudioSource>();
 
         if (instance == null) {
             instance = this;
@@ -21,7 +24,13 @@ public class SoundManager : MonoBehaviour
         ChangeMusicVolume(0);
         ChangeSoundVolume(0);
 
-        PlayMusic();
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 0) {
+            PlayMenuMusic(); //menu music
+        }
+        else {
+            PlayMusic(); //game music
+        }
     }
 
     public void PlaySound(AudioClip _sound){
@@ -33,10 +42,22 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PlayMenuMusic() {
+        menuMusicSource.loop = true;
+        menuMusicSource.Play();
+    }
+
     public void StopMusic() {
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
+        }
+    }
+
+    public void StopMenuMusic() {
+        if (menuMusicSource.isPlaying)
+        {
+            menuMusicSource.Stop();
         }
     }
 

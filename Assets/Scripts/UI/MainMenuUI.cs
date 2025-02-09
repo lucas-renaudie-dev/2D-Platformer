@@ -10,6 +10,8 @@ public class MainMenuUI : MonoBehaviour
     }
     
     public void Play() {
+        SoundManager.instance.StopMenuMusic();
+        SoundManager.instance.PlayMusic();
         SceneManager.LoadSceneAsync(1);
         Time.timeScale = 1f;
     }
