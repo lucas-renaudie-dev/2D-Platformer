@@ -6480,10 +6480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 689707999}
-  gameOverSound: {fileID: 8300000, guid: 3eea7a9cbed39ed4eb601ff46ad348ca, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 771bee333ade12b4ab931c7c15e2d084, type: 3}
   pauseScreen: {fileID: 503611884}
   pauseSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
-  script: {fileID: 0}
 --- !u!1 &681996958
 GameObject:
   m_ObjectHideFlags: 0

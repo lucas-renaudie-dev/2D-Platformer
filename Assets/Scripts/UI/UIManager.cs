@@ -11,8 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private AudioClip pauseSound;
 
-    [SerializeField] private DifficultyScript script;
-
     //[SerializeField] private AudioClip unpauseSound;
 
     private void Update() {
@@ -81,11 +79,5 @@ public class UIManager : MonoBehaviour
         SoundManager.instance.ChangeMusicVolume(0.2f);
     }
 
-    #endregion
-
-    #region Main Menu
-    public void Difficulty() {
-        script.ChangeDifficulty();
-    }
     #endregion
 }

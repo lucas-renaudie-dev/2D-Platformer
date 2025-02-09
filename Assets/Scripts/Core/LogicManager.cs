@@ -5,9 +5,9 @@ public class LogicManager : MonoBehaviour
 {
     
     //TODO: 
-    //Chill music for main menu and game music when start/restart game
     //lower volume of game over sound
-    //"Level complete !" screen with number of coins, Main Menu and Quit buttons
+
+    //fix enemy health = 1 when difficulty impossible
 
     //Main Menu screen with coins, hearts, fireballs, arrows, enemies, spike traps, etc. 
     //player idle next to title
