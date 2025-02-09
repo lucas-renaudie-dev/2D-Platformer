@@ -27,7 +27,12 @@ public class Health : MonoBehaviour
 
    private void Awake()
    {
-      currentHealth = startingHealth;
+      string diff = DifficultyScript.Instance.currentDifficulty;
+      if (diff == "IMPOSSIBLE")
+         currentHealth = 1;
+      else 
+         currentHealth = startingHealth;
+
       anim = GetComponent<Animator>();
       sprite = GetComponent<SpriteRenderer>();
       uiManager = FindFirstObjectByType<UIManager>();
