@@ -1,27 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class SelectionArrow : MonoBehaviour
+public class MenuSelection : MonoBehaviour
 {
     [SerializeField] private RectTransform[] options;
     [SerializeField] private AudioClip changeSound;
     [SerializeField] private AudioClip gameStartSound;
     [SerializeField] private AudioClip interactSound;
-    
+
     private RectTransform rect;
     private int currentPosition;
 
     private void Awake() {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex == 0) {
-            GetComponent<Image>().enabled = false;   
-            options[currentPosition].GetComponent<Text>().color = Color.green;         
-        }
-        else {
-            GetComponent<Image>().enabled = true;        
-            rect = GetComponent<RectTransform>();
-        }
+        rect = GetComponent<RectTransform>();
     }
 
     private void Update() {
@@ -48,20 +39,18 @@ public class SelectionArrow : MonoBehaviour
         else if (currentPosition > options.Length - 1)
             currentPosition = 0;
 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex == 0)
-            for (int i=0; i<options.Length; i++) {
+        for (int i=0; i<options.Length; i++) {
             if (i==currentPosition)
                 options[i].GetComponent<Text>().color = Color.green;    
             else   
                 options[i].GetComponent<Text>().color = Color.white;    
-            }
-        else
-            rect.position = new Vector3(rect.position.x, options[currentPosition].position.y, 0);
+        }
+
+        //rect.position = new Vector3(rect.position.x, options[currentPosition].position.y, 0);
     }
 
     private void Interact() {
-        if (options[currentPosition].GetComponent<Text>().text == "RESTART" || options[currentPosition].GetComponent<Text>().text == "PLAY") //|| options[currentPosition].GetComponent<Text>().text == "RESUME"
+        if (options[currentPosition].GetComponent<Text>().text == "RESTART") //|| options[currentPosition].GetComponent<Text>().text == "RESUME"
             SoundManager.instance.PlaySound(gameStartSound);
         else
             SoundManager.instance.PlaySound(interactSound);

@@ -4000,7 +4000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.39520293, g: 0.45579326, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5490,7 +5490,6 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: 3eea7a9cbed39ed4eb601ff46ad348ca, type: 3}
   pauseScreen: {fileID: 503611884}
   pauseSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
-  mainMenuScreen: {fileID: 0}
   script: {fileID: 0}
 --- !u!1 &685748175
 GameObject:
@@ -14654,6 +14653,8 @@ MonoBehaviour:
   Heart1fill: {fileID: 1853640478}
   Heart2fill: {fileID: 883671000}
   Heart3fill: {fileID: 150951423}
+  Heart2: {fileID: 661140021}
+  Heart3: {fileID: 1439356364}
 --- !u!1 &2018964057
 GameObject:
   m_ObjectHideFlags: 0
