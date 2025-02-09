@@ -30,6 +30,7 @@ public class RangedEnemy : MonoBehaviour
     private void Awake() {
         anim = GetComponent<Animator>();
         enemyPatroll = GetComponentInParent<EnemyPatroll>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
     }
 
     private void Update() {

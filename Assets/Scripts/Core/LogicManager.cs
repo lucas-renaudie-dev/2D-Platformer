@@ -5,15 +5,12 @@ public class LogicManager : MonoBehaviour
 {
     
     //TODO: 
-    //lower volume of game over sound
-
-    //fix enemy health = 1 when difficulty impossible
-
     //Main Menu screen with coins, hearts, fireballs, arrows, enemies, spike traps, etc. 
     //player idle next to title
     //better background image
 
-    //Fix room trap reset (checkpoint? doors?)
+    //Fix room enemies and trap reset (checkpoint? doors?)
+    //Also deactivate all enemies and traps after death
 
     //Create game!
     
