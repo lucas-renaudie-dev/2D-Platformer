@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
    private void Awake()
    {
       string diff = DifficultyScript.Instance.currentDifficulty;
-      if (diff == "IMPOSSIBLE")
+      if (diff == "IMPOSSIBLE" && tag == "Player")
          currentHealth = 1;
       else 
          currentHealth = startingHealth;
