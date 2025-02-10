@@ -20,6 +20,10 @@ public class SpikeHead : EnemyDamage
         Stop();
     }
 
+    private void Start() {
+        checkTimer = checkDelay;
+    }
+
     private void Update() {
         if (attacking) {
             transform.Translate(destination * speed * Time.deltaTime);

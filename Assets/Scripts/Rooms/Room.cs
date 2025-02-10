@@ -15,11 +15,12 @@ public class Room : MonoBehaviour
         }
     }
 
+    //TODO: chatgpt coroutine 0.5s
     public void ActivateRoom(bool _status) {
         for (int i=0; i<enemies.Length; i++) {
             if (enemies[i] != null) {
-                enemies[i].SetActive(_status);
                 enemies[i].transform.position = initialPositions[i];
+                enemies[i].SetActive(_status);
             }
         }
     }
