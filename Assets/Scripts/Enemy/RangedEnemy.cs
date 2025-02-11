@@ -22,6 +22,9 @@ public class RangedEnemy : MonoBehaviour
     [Header("Fireball Sound")]
     [SerializeField] private AudioClip fireballSound;
 
+    [Header("Level Complete Case")]
+    public LevelComplete victory;
+
     //References
     private Animator anim;
     private Health playerHealth;
@@ -36,7 +39,7 @@ public class RangedEnemy : MonoBehaviour
     private void Update() {
         cooldownTimer += Time.deltaTime;
 
-        if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0) {
+        if (cooldownTimer >= attackCooldown) {
             if (PlayerInSight()) {
                 cooldownTimer = 0;
                 anim.SetTrigger("rangedAttack");
@@ -44,7 +47,7 @@ public class RangedEnemy : MonoBehaviour
         }
 
         if (enemyPatroll != null) {
-            enemyPatroll.enabled = !PlayerInSight();  
+            enemyPatroll.enabled = !PlayerInSight() && playerHealth.currentHealth > 0 && !victory.signPassed;  
         }
     }
 
@@ -66,7 +69,7 @@ public class RangedEnemy : MonoBehaviour
     }
 
     private bool PlayerInSight() {
-        if (playerHealth.currentHealth <= 0) {
+        if (playerHealth.currentHealth <= 0 || victory.signPassed) {
             return false;
         }
 

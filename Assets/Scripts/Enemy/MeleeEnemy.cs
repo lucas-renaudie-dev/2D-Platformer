@@ -17,6 +17,9 @@ public class MeleeEnemy : MonoBehaviour
 
     [Header("Attack Sound")]
     [SerializeField] private AudioClip attackSound;
+    
+    [Header("Level Complete Case")]
+    public LevelComplete victory;
 
     //References
     private float cooldownTimer = Mathf.Infinity;
@@ -31,7 +34,7 @@ public class MeleeEnemy : MonoBehaviour
     private void Update() {
         cooldownTimer += Time.deltaTime;
 
-        if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0) {
+        if (cooldownTimer >= attackCooldown) {
             if (PlayerInSight()) {
                 cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");
@@ -40,12 +43,12 @@ public class MeleeEnemy : MonoBehaviour
         }
 
         if (enemyPatroll != null) {
-            enemyPatroll.enabled = !PlayerInSight();  
+            enemyPatroll.enabled = !PlayerInSight() && playerHealth.currentHealth > 0 && !victory.signPassed;  
         }
     }
 
     private bool PlayerInSight() {
-        if (playerHealth.currentHealth <= 0) {
+        if (playerHealth.currentHealth <= 0 || victory.signPassed) {
             return false;
         }
 

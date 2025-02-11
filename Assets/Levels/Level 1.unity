@@ -2026,6 +2026,10 @@ PrefabInstance:
       propertyPath: 'components.Array.data[2]'
       value: 
       objectReference: {fileID: 125482439}
+    - target: {fileID: 7506983083130679751, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
     - target: {fileID: 8121615062335100456, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.74
@@ -19153,7 +19157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d706f6697fb902449a71d82d8134eccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signPassed: 0
   levelCompleteScreen: {fileID: 681996958}
   victorySound: {fileID: 8300000, guid: 0ae322128f66efc4f8613f70afdc2c7f, type: 3}
 --- !u!61 &2064739587
@@ -20150,6 +20153,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6452769679628028799, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
+    - target: {fileID: 7506983083130679751, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
     - target: {fileID: 8675904753496616364, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_Layer
       value: 10

@@ -52,10 +52,7 @@ public class Health : MonoBehaviour
             if (!dead) {
                //TODO: Deactivate all attached component classes ()
 
-               foreach (Behaviour component in components) {
-                  component.enabled = false;
-                  Debug.Log(component);
-               }
+               DeactivateComponents();
 
                if (gameObject.tag == "Player") { //Player death
                   anim.SetBool("Grounded", true);
@@ -80,6 +77,13 @@ public class Health : MonoBehaviour
                }
             }
         }
+   }
+
+   public void DeactivateComponents() {
+      foreach (Behaviour component in components) {
+         component.enabled = false;
+         Debug.Log(component);
+      }
    }
 
    public void AddHealth(float _health, GameObject HealthCollectible) {
@@ -143,7 +147,7 @@ public class Health : MonoBehaviour
    }
 
    private void Deactivate() {
-      //gameObject.SetActive(false);
+      gameObject.SetActive(false);
    }
 
    public void DisableCollisionWithPlayer(Collider2D enemyCollider) {
