@@ -30,6 +30,10 @@ public class EnemyPatroll : MonoBehaviour
     }
 
     private void Update() {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth <= 0) {
+            return;
+        }
+
         if (isMovingLeft) {
             if (enemy.position.x > leftEdge.position.x) {
                 MoveInDirection(-1);

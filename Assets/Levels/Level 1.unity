@@ -6598,7 +6598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 689707999}
-  gameOverSound: {fileID: 8300000, guid: 771bee333ade12b4ab931c7c15e2d084, type: 3}
+  gameOverSound: {fileID: 8300000, guid: ce1b8f60af14d5e42b3b42585107e810, type: 3}
   pauseScreen: {fileID: 503611884}
   pauseSound: {fileID: 8300000, guid: 1fda6f5a3563dec48a8fa0fdd894d3a7, type: 3}
 --- !u!1 &681996958
@@ -20078,9 +20078,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460269548}
     m_Modifications:
+    - target: {fileID: 73162334431831238, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 88355012661660780, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 146108031787628657, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 486886303448336250, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_Name
       value: EnemyPatroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886299759310299783, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3240931616228531028, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20121,6 +20137,26 @@ PrefabInstance:
     - target: {fileID: 3240931616228531028, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430043535392600195, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532628364462320453, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294794263541741785, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675904753496616364, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066256411288018669, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

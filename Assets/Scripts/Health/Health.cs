@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
    [SerializeField] private float iFramesDuration;
    [SerializeField] private int numberOfFlashes;
    private SpriteRenderer sprite;
+   public bool isInvulnerable { get; private set; }
 
    [Header("Components")]
    [SerializeField] private Behaviour[] components;
@@ -94,27 +95,37 @@ public class Health : MonoBehaviour
    private IEnumerator InvulnerabilityHurt() { //invulnerability after taking damage
       //anim.SetBool("hurt", true);
       Physics2D.IgnoreLayerCollision(9, 10, true);
+      isInvulnerable = true;
+      
       for (int i = 0; i < numberOfFlashes; i++) {
          sprite.color = new Color(1, 0, 0, 0.5f);
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
          sprite.color = Color.white;
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
       }
-      Physics2D.IgnoreLayerCollision(9, 10, false);
+
       //anim.SetBool("hurt", false);
+      Physics2D.IgnoreLayerCollision(9, 10, false);
+      isInvulnerable = false;
    }
 
    private IEnumerator InvulnerabilityRespawn() { //invulnerability after respawn
+      GetComponent<PlayerAttack>().enabled = false;
       GetComponent<PlayerMovement>().enabled = false;
       Physics2D.IgnoreLayerCollision(9, 10, true);
+      isInvulnerable = true;
+      
       for (int i = 0; i < numberOfFlashes; i++) {
          sprite.color = new Color(1, 0, 0, 0.5f);
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
          sprite.color = Color.white;
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
       }
-      Physics2D.IgnoreLayerCollision(9, 10, false);
+            
+      GetComponent<PlayerAttack>().enabled = true;
       GetComponent<PlayerMovement>().enabled = true;
+      Physics2D.IgnoreLayerCollision(9, 10, false);
+      isInvulnerable = false;
    }
 
    public void Respawn() {

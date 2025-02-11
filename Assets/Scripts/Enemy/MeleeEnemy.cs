@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
@@ -64,7 +63,7 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     private void DamagePlayer() {
-        if (PlayerInSight()) {
+        if (PlayerInSight() && !playerHealth.isInvulnerable) {
             playerHealth.TakeDamage(damage);
         }
     }

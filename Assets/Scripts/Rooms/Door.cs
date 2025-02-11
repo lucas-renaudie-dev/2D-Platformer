@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -19,6 +18,7 @@ public class Door : MonoBehaviour
             
             cam.MoveToNewRoom(nextRoom);
             doorInner.SetActive(true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRespawn>().currentRoom = nextRoom;
 
             nextRoom.GetComponent<Room>().SetActiveRoomTrue();
             prevRoom.GetComponent<Room>().ToggleRoomOffAfterDelay(0.5f);

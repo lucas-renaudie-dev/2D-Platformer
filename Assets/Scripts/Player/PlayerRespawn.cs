@@ -6,22 +6,26 @@ public class PlayerRespawn : MonoBehaviour
     private GameObject currentCheckpoint;
     private Health playerHealth;
     public bool checkpointExists = false;
+    public Transform currentRoom;
 
     private void Awake() {
         playerHealth = GetComponent<Health>();
     }
 
     public void StartRespawn() {
-        if (!checkpointExists) {
-            return;
-        }
+        //deactivate room where the player died
+        currentRoom.GetComponent<Room>().ToggleRoomOffAfterDelay(0.5f);
+
         transform.position = new Vector3 (currentCheckpoint.transform.position.x, -2.07f, 0);
         transform.localScale = new Vector3(-1, 1, 0);
         transform.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         playerHealth.Respawn();
 
-        Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.transform.parent.parent); //change to .parent if checkpoint is direct child of room object (currently it is child of child because it is in the stage folder)
-    
+        Transform checkpointRoom = currentCheckpoint.transform.parent.parent; 
+        Camera.main.GetComponent<CameraController>().MoveToNewRoom(checkpointRoom); //change to .parent if checkpoint is direct child of room object (currently it is child of child because it is in the stage folder)
+        checkpointRoom.GetComponent<Room>().SetActiveRoomTrue();
+        currentRoom = checkpointRoom; //current room becomes the checkpoint room
+
         GameObject[] doorArray = currentCheckpoint.GetComponent<Checkpoint>().doors;
         for (int i = 0; i < doorArray.Length; i++) {
             doorArray[i].GetComponent<Door>().doorInner.SetActive(false);

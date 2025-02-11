@@ -42,8 +42,8 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision) {
         base.OnTriggerEnter2D(collision); //execute logic from parent script first
-        
-        if (collision.tag != "Enemy" && collision.tag != "Fireball" && collision.tag != "Coin") {
+         
+        if (collision.tag != "Enemy" && collision.tag != "Fireball" && collision.tag != "Coin" && collision.tag != "Checkpoint" && collision.tag != "NextRoomSign") {
             hit = true;
             coll.enabled = false;
 

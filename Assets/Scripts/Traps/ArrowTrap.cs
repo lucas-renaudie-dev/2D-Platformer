@@ -33,7 +33,9 @@ public class ArrowTrap : MonoBehaviour
         if(cooldownTimer < attackCooldown) {
             cooldownTimer += Time.deltaTime;
         } else {
-            Attack();
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth > 0) {
+                Attack();
+            }
             cooldownTimer = 0;
         }
     }
