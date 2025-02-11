@@ -66,6 +66,10 @@ public class RangedEnemy : MonoBehaviour
     }
 
     private bool PlayerInSight() {
+        if (playerHealth.currentHealth <= 0) {
+            return false;
+        }
+
         RaycastHit2D hit = Physics2D.BoxCast(hitbox.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, 
         new Vector3(hitbox.bounds.size.x * range, hitbox.bounds.size.y, hitbox.bounds.size.z), 
         0, Vector2.left, 0, playerLayer);

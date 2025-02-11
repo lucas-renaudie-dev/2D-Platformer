@@ -192,7 +192,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1877196338047044709, guid: 661b77c43a706e6469e80944cbb235d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1940165
+      value: 2.73
       objectReference: {fileID: 0}
     - target: {fileID: 1877196338047044709, guid: 661b77c43a706e6469e80944cbb235d6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7991689832583987202, guid: 661b77c43a706e6469e80944cbb235d6, type: 3}
+      propertyPath: 'components.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3913458609815618875}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
