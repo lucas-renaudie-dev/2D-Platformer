@@ -53,6 +53,7 @@ public class Health : MonoBehaviour
 
                foreach (Behaviour component in components) {
                   component.enabled = false;
+                  Debug.Log(component);
                }
 
                if (gameObject.tag == "Player") { //Player death
@@ -65,11 +66,13 @@ public class Health : MonoBehaviour
                      GetComponent<PlayerRespawn>().StartRespawn();
                   }
                   else {
+                     Physics2D.IgnoreLayerCollision(9, 10, true);
                      uiManager.GameOver();
                   }
                }
 
                else { //Enemy death
+                  DisableCollisionWithPlayer(GetComponent<Collider2D>());
                   anim.SetTrigger("dead");
                   dead = true;
                   SoundManager.instance.PlaySound(deathSound);
@@ -129,6 +132,11 @@ public class Health : MonoBehaviour
    }
 
    private void Deactivate() {
-      gameObject.SetActive(false);
+      //gameObject.SetActive(false);
+   }
+
+   public void DisableCollisionWithPlayer(Collider2D enemyCollider) {
+      Collider2D playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
+      Physics2D.IgnoreCollision(enemyCollider, playerCollider, true);
    }
 }

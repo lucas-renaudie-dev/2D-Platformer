@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     public void Restart() {
         SoundManager.instance.PlayMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 
     public void MainMenu() {
