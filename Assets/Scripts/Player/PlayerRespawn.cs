@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
@@ -21,7 +22,7 @@ public class PlayerRespawn : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         playerHealth.Respawn();
 
-        resetTrapsAfterCheckpoint();
+        resetTraps();
         Debug.Log("BBB");
 
         Transform checkpointRoom = currentCheckpoint.transform.parent.parent; 
@@ -50,9 +51,29 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    void resetTrapsAfterCheckpoint() {
-        Debug.Log("AAA");
-        foreach (var trap in currentCheckpoint.GetComponent<Checkpoint>().enemiesAfterCheckpoint)
+    //--------------------------------------------- TRAP RESET ---------------------------------------------------------------------------------------------------------------------
+    public void resetTraps() {
+        resetTrapsInCheckpointRoom();
+        resetTrapsAfterCheckpointRoom();
+    }
+
+    void resetTrapsInCheckpointRoom() {
+        GameObject[] enemiesInCheckpointRoom = currentCheckpoint.GetComponent<Checkpoint>().enemiesInCheckpointRoom;
+        resetTraps(enemiesInCheckpointRoom);
+    }
+
+    void resetTrapsAfterCheckpointRoom() {
+        StartCoroutine(ResetTrapsAfterDelay(0.6f)); //reset all traps after the current checkpoint room (after at least the delay required to toggle the rooms off, which is 0.5, so let's do 0.6)
+    }
+
+    private IEnumerator ResetTrapsAfterDelay(float delay) {
+        GameObject[] enemiesAfterCheckpointRoom = currentCheckpoint.GetComponent<Checkpoint>().enemiesAfterCheckpointRoom;
+        yield return new WaitForSeconds(delay);
+        resetTraps(enemiesAfterCheckpointRoom);
+    }
+
+    void resetTraps(GameObject[] traps) {
+        foreach (var trap in traps)
         {
             if (trap.GetComponent<EnemyPatroll>() != null) {
                 trap.GetComponent<EnemyPatroll>().ResetTrap();

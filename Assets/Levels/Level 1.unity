@@ -1954,10 +1954,11 @@ MonoBehaviour:
   signs:
   - {fileID: 2063099150}
   - {fileID: 1610273454}
-  enemiesAfterCheckpoint:
+  enemiesInCheckpointRoom:
   - {fileID: 2117707611}
   - {fileID: 1385093424}
   - {fileID: 1159605628}
+  enemiesAfterCheckpointRoom:
   - {fileID: 765843995}
   - {fileID: 125482442}
 --- !u!1001 &125482437
