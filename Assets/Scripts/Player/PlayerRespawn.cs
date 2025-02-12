@@ -21,6 +21,9 @@ public class PlayerRespawn : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         playerHealth.Respawn();
 
+        resetTrapsAfterCheckpoint();
+        Debug.Log("BBB");
+
         Transform checkpointRoom = currentCheckpoint.transform.parent.parent; 
         Camera.main.GetComponent<CameraController>().MoveToNewRoom(checkpointRoom); //change to .parent if checkpoint is direct child of room object (currently it is child of child because it is in the stage folder)
         checkpointRoom.GetComponent<Room>().SetActiveRoomTrue();
@@ -44,6 +47,25 @@ public class PlayerRespawn : MonoBehaviour
             other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Animator>().SetTrigger("checkpointPassed");
             checkpointExists = true;
+        }
+    }
+
+    void resetTrapsAfterCheckpoint() {
+        Debug.Log("AAA");
+        foreach (var trap in currentCheckpoint.GetComponent<Checkpoint>().enemiesAfterCheckpoint)
+        {
+            if (trap.GetComponent<EnemyPatroll>() != null) {
+                trap.GetComponent<EnemyPatroll>().ResetTrap();
+                Debug.Log("1");
+            }
+            if (trap.GetComponent<EnemySideways>() != null) {
+                trap.GetComponent<EnemySideways>().ResetTrap();
+                Debug.Log("2");
+            }
+            if (trap.GetComponent<SpikeHead>() != null) {
+                trap.GetComponent<SpikeHead>().ResetTrap();
+                Debug.Log("3");
+            }
         }
     }
 }

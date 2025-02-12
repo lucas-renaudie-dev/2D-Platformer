@@ -4,6 +4,7 @@ using System.Collections;
 public class Room : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemies;
+    public Transform firstRoom;
     private Vector3[] initialPositions;
     private bool desiredActiveState;
 
@@ -14,6 +15,15 @@ public class Room : MonoBehaviour
             if (enemies[i] != null) {
                 initialPositions[i] = enemies[i].transform.position;
             }
+        }
+    }
+
+    private void Start() {
+        if (transform == firstRoom) {
+            SetActiveRoomTrue();
+        }
+        else {
+            SetActiveRoomFalse();
         }
     }
 
@@ -47,6 +57,11 @@ public class Room : MonoBehaviour
     public void SetActiveRoomTrue() {
         desiredActiveState = true;
         ActivateRoom(true);
+    }
+
+    public void SetActiveRoomFalse() {
+        desiredActiveState = false;
+        ActivateRoom(false);
     }
 }
 

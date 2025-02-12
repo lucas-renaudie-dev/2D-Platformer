@@ -20,7 +20,7 @@ public class EnemyPatroll : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator anim;
 
-    private void Awake() {
+    private void Start() {
         isMovingLeft = true;
     }
 
@@ -54,7 +54,6 @@ public class EnemyPatroll : MonoBehaviour
     private void DirectionChange() {
         anim.SetBool("moving", false);
 
-
         idleTime += Time.deltaTime;
 
         if (idleTime >= idleDuration) {
@@ -70,5 +69,10 @@ public class EnemyPatroll : MonoBehaviour
         enemy.position = new Vector3(enemy.position.x + _direction * Time.deltaTime * speed, enemy.position.y, enemy.position.z);
     
         enemy.localScale = new Vector3(_direction, 1, 1);
+    }
+
+    public void ResetTrap() {
+        idleTime = 0;
+        isMovingLeft = true;
     }
 }

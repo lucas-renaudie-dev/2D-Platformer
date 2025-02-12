@@ -1954,6 +1954,12 @@ MonoBehaviour:
   signs:
   - {fileID: 2063099150}
   - {fileID: 1610273454}
+  enemiesAfterCheckpoint:
+  - {fileID: 2117707611}
+  - {fileID: 1385093424}
+  - {fileID: 1159605628}
+  - {fileID: 765843995}
+  - {fileID: 125482442}
 --- !u!1001 &125482437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1972,7 +1978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1472218977291200567, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.06
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3240931616228531028, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2031,10 +2037,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 125482439}
     - target: {fileID: 7506983083130679751, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
-      propertyPath: range
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506983083130679751, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: victory
       value: 
       objectReference: {fileID: 2064739586}
@@ -2044,7 +2046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8250671730368579030, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.92
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 8881398725552707610, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2066,7 +2068,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3913458609815618875, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
   m_PrefabInstance: {fileID: 125482437}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 125482442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1b0a26c4f23c2b488e8769163f50c6f, type: 3}
@@ -2080,6 +2082,11 @@ Transform:
 --- !u!95 &125482441 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4157033559945347435, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+  m_PrefabInstance: {fileID: 125482437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &125482442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 486886303448336250, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
   m_PrefabInstance: {fileID: 125482437}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &126062817
@@ -3985,11 +3992,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &265353607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 966121581355456174, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
-  m_PrefabInstance: {fileID: 125482437}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &282258239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,7 +5870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 265353607}
+  - {fileID: 125482442}
+  - {fileID: 1895625057}
+  - {fileID: 1895625056}
+  - {fileID: 1895625055}
+  firstRoom: {fileID: 920305184}
 --- !u!1 &583409403
 GameObject:
   m_ObjectHideFlags: 0
@@ -8638,6 +8644,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1764153635}
   - {fileID: 1845899864}
+  firstRoom: {fileID: 920305184}
 --- !u!1 &923008493
 GameObject:
   m_ObjectHideFlags: 0
@@ -12062,6 +12069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 765843995}
+  firstRoom: {fileID: 920305184}
 --- !u!1 &1231347829
 GameObject:
   m_ObjectHideFlags: 0
@@ -17826,6 +17834,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9076408909176856672, guid: 746a840f7543ec34dbdb8c7cf84ce481, type: 3}
   m_PrefabInstance: {fileID: 996894833}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895625055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 327238624387740821, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+  m_PrefabInstance: {fileID: 125482437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895625056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 966121581355456174, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+  m_PrefabInstance: {fileID: 125482437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1895625057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5527854793772656871, guid: 5597f1ff77a50ac479fd10250b42aadc, type: 3}
+  m_PrefabInstance: {fileID: 125482437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1917026564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7889087398883503251, guid: 928c7ccdc7fc30447821789f5a1d36cf, type: 3}
@@ -19597,6 +19620,7 @@ MonoBehaviour:
   - {fileID: 2117707611}
   - {fileID: 1385093424}
   - {fileID: 1159605628}
+  firstRoom: {fileID: 920305184}
 --- !u!1 &2117707611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3108657509437317232, guid: 25cecc01a31ffe54f8928d78d126ac1d, type: 3}

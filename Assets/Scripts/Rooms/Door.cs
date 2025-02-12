@@ -7,10 +7,6 @@ public class Door : MonoBehaviour
     [SerializeField] protected CameraController cam;
     public GameObject doorInner;
 
-    private void Start() {
-        nextRoom.GetComponent<Room>().ActivateRoom(false);
-    }
-
     //Camera moves to new room + sets checkpoint (can't go back)
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player" && other.transform.position.x > transform.position.x) {

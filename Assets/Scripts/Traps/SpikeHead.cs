@@ -72,4 +72,9 @@ public class SpikeHead : EnemyDamage
         base.OnTriggerEnter2D(other);
         Stop();
     }
+
+    public void ResetTrap() {
+        checkTimer = checkDelay;
+        attacking = false;
+    }
 }

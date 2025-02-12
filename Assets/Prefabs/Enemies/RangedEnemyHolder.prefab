@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 2
   damage: 1
-  range: 12
+  range: 6
   firePoint: {fileID: 7832399943333806307}
   fireballs:
   - {fileID: 2137400532822226727}

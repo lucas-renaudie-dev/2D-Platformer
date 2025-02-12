@@ -110,4 +110,9 @@ public class EnemySideways : MonoBehaviour
             collision.GetComponent<Health>().TakeDamage(1);
         }
     }
+
+    public void ResetTrap() {
+        timer = 0;
+        ghostScale = -1;
+    }
 }

@@ -4,6 +4,7 @@ public class Checkpoint : MonoBehaviour
 {
     public GameObject[] doors;
     public GameObject[] signs;
+    public GameObject[] enemiesAfterCheckpoint; //including those in checkpoint room
 
     private void Awake() {
         string diff = DifficultyScript.Instance.currentDifficulty;
