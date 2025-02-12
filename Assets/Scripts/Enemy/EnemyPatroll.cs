@@ -11,7 +11,6 @@ public class EnemyPatroll : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float speed;
-    private Vector3 initScale;
     private bool isMovingLeft;
 
     [Header("Idle Behavior")]
@@ -22,7 +21,7 @@ public class EnemyPatroll : MonoBehaviour
     [SerializeField] private Animator anim;
 
     private void Awake() {
-        initScale = enemy.localScale;   
+        isMovingLeft = true;
     }
 
     private void OnDisable() {

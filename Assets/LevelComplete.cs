@@ -16,7 +16,7 @@ public class LevelComplete : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && !signPassed)
+        if (other.gameObject.tag == "Player" && other.GetComponent<Health>().currentHealth > 0 && !signPassed)
         {
             collider.enabled = false;
             signPassed = true;
