@@ -16,6 +16,21 @@ public class Checkpoint : MonoBehaviour
         else 
             gameObject.SetActive(false);
     }
+    //--------------------------------------------- DOOR RESET ---------------------------------------------------------------------------------------------------------------------
+    public void ResetDoors() { 
+        for (int i = 0; i < doors.Length; i++) {
+            doors[i].GetComponent<Door>().doorPassed = false;
+            doors[i].GetComponent<Door>().doorInner.SetActive(false);
+        }
+    }
+
+    //--------------------------------------------- SIGN RESET ---------------------------------------------------------------------------------------------------------------------
+    public void ResetSigns() {
+        for (int i = 0; i < signs.Length; i++) {
+            signs[i].GetComponent<NextRoomSign>().signPassed = false;
+            signs[i].GetComponent<Collider2D>().enabled = true;
+        }
+    }
 
     //--------------------------------------------- TRAP RESET ---------------------------------------------------------------------------------------------------------------------
     public void ResetTraps() {

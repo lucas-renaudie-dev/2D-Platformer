@@ -29,15 +29,8 @@ public class PlayerRespawn : MonoBehaviour
         checkpointRoom.GetComponent<Room>().SetActiveRoomTrue();
         currentRoom = checkpointRoom; //current room becomes the checkpoint room
 
-        GameObject[] doorArray = currentCheckpoint.GetComponent<Checkpoint>().doors;
-        for (int i = 0; i < doorArray.Length; i++) {
-            doorArray[i].GetComponent<Door>().doorInner.SetActive(false);
-        }
-        GameObject[] signArray = currentCheckpoint.GetComponent<Checkpoint>().signs;
-        for (int i = 0; i < signArray.Length; i++) {
-            signArray[i].GetComponent<NextRoomSign>().signPassed = false;
-            signArray[i].GetComponent<Collider2D>().enabled = true;
-        }
+        currentCheckpoint.GetComponent<Checkpoint>().ResetDoors();
+        currentCheckpoint.GetComponent<Checkpoint>().ResetSigns();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

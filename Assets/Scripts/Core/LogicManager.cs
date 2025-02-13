@@ -4,11 +4,8 @@ using UnityEngine.SceneManagement;
 public class LogicManager : MonoBehaviour
 {
     
-    //TODO: 
-    //Main Menu screen with coins, hearts, fireballs, arrows, enemies, spike traps, etc. 
-    //player idle next to title
-    //better background image
-
+    //TODO:
+    //Fix spike head retarded shit
     //Create game!
     
     private void Update() {
