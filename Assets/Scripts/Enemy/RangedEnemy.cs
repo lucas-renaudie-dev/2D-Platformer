@@ -85,4 +85,10 @@ public class RangedEnemy : MonoBehaviour
         Gizmos.DrawWireCube(hitbox.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, 
         new Vector3(hitbox.bounds.size.x * range, hitbox.bounds.size.y, hitbox.bounds.size.z));
     }
+
+    public void ResetTrap() {
+        for (int i = 0; i < fireballs.Length; i++) {
+            fireballs[i].SetActive(false);
+        }
+    }
 }

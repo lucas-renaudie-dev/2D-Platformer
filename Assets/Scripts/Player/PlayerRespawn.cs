@@ -22,8 +22,7 @@ public class PlayerRespawn : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         playerHealth.Respawn();
 
-        resetTraps();
-        Debug.Log("BBB");
+        currentCheckpoint.GetComponent<Checkpoint>().ResetTraps();
 
         Transform checkpointRoom = currentCheckpoint.transform.parent.parent; 
         Camera.main.GetComponent<CameraController>().MoveToNewRoom(checkpointRoom); //change to .parent if checkpoint is direct child of room object (currently it is child of child because it is in the stage folder)
@@ -48,45 +47,6 @@ public class PlayerRespawn : MonoBehaviour
             other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Animator>().SetTrigger("checkpointPassed");
             checkpointExists = true;
-        }
-    }
-
-    //--------------------------------------------- TRAP RESET ---------------------------------------------------------------------------------------------------------------------
-    public void resetTraps() {
-        resetTrapsInCheckpointRoom();
-        resetTrapsAfterCheckpointRoom();
-    }
-
-    void resetTrapsInCheckpointRoom() {
-        GameObject[] enemiesInCheckpointRoom = currentCheckpoint.GetComponent<Checkpoint>().enemiesInCheckpointRoom;
-        resetTraps(enemiesInCheckpointRoom);
-    }
-
-    void resetTrapsAfterCheckpointRoom() {
-        StartCoroutine(ResetTrapsAfterDelay(0.6f)); //reset all traps after the current checkpoint room (after at least the delay required to toggle the rooms off, which is 0.5, so let's do 0.6)
-    }
-
-    private IEnumerator ResetTrapsAfterDelay(float delay) {
-        GameObject[] enemiesAfterCheckpointRoom = currentCheckpoint.GetComponent<Checkpoint>().enemiesAfterCheckpointRoom;
-        yield return new WaitForSeconds(delay);
-        resetTraps(enemiesAfterCheckpointRoom);
-    }
-
-    void resetTraps(GameObject[] traps) {
-        foreach (var trap in traps)
-        {
-            if (trap.GetComponent<EnemyPatroll>() != null) {
-                trap.GetComponent<EnemyPatroll>().ResetTrap();
-                Debug.Log("1");
-            }
-            if (trap.GetComponent<EnemySideways>() != null) {
-                trap.GetComponent<EnemySideways>().ResetTrap();
-                Debug.Log("2");
-            }
-            if (trap.GetComponent<SpikeHead>() != null) {
-                trap.GetComponent<SpikeHead>().ResetTrap();
-                Debug.Log("3");
-            }
         }
     }
 }

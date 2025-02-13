@@ -82,8 +82,15 @@ public class Health : MonoBehaviour
    public void DeactivateComponents() {
       foreach (Behaviour component in components) {
          component.enabled = false;
-         Debug.Log(component);
       }
+   }
+
+   public void ActivateComponents() {
+      foreach (Behaviour component in components) {
+         component.enabled = true;
+      }
+      currentHealth = startingHealth;
+      dead = false;
    }
 
    public void AddHealth(float _health, GameObject HealthCollectible) {
@@ -114,8 +121,7 @@ public class Health : MonoBehaviour
    }
 
    private IEnumerator InvulnerabilityRespawn() { //invulnerability after respawn
-      GetComponent<PlayerAttack>().enabled = false;
-      GetComponent<PlayerMovement>().enabled = false;
+      DeactivateComponents();
       Physics2D.IgnoreLayerCollision(9, 10, true);
       isInvulnerable = true;
       
@@ -126,8 +132,7 @@ public class Health : MonoBehaviour
          yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
       }
             
-      GetComponent<PlayerAttack>().enabled = true;
-      GetComponent<PlayerMovement>().enabled = true;
+      ActivateComponents();
       Physics2D.IgnoreLayerCollision(9, 10, false);
       isInvulnerable = false;
    }

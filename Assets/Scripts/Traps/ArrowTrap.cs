@@ -7,6 +7,7 @@ public class ArrowTrap : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firepoint;
     [SerializeField] private GameObject[] arrows;
+    public LevelComplete victory;
     private float cooldownTimer;
 
     [Header("Sound")]
@@ -33,10 +34,16 @@ public class ArrowTrap : MonoBehaviour
         if(cooldownTimer < attackCooldown) {
             cooldownTimer += Time.deltaTime;
         } else {
-            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth > 0) {
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth > 0 && !victory.signPassed) {
                 Attack();
             }
             cooldownTimer = 0;
+        }
+    }
+
+    public void ResetTrap() {
+        for (int i = 0; i < arrows.Length; i++) {
+            arrows[i].SetActive(false);
         }
     }
 }
