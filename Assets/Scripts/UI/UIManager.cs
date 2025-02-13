@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
         SoundManager.instance.StopMusic();
         SoundManager.instance.PlayMenuMusic();
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
     public void Quit() {

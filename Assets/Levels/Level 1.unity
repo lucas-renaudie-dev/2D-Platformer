@@ -13690,6 +13690,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3082696147940119602, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
     - target: {fileID: 3587507848728902409, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.95

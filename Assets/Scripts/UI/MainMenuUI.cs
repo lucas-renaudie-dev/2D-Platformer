@@ -13,7 +13,6 @@ public class MainMenuUI : MonoBehaviour
         SoundManager.instance.StopMenuMusic();
         SoundManager.instance.PlayMusic();
         SceneManager.LoadSceneAsync(1);
-        Time.timeScale = 1f;
         Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 
