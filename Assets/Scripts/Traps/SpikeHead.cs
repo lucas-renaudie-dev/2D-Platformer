@@ -7,14 +7,20 @@ public class SpikeHead : EnemyDamage
     [SerializeField] private float range;
     [SerializeField] private float checkDelay;
     [SerializeField] private LayerMask playerLayer;
-    
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip impactSound;
+
+    [Header("Thresholds")]
+    [SerializeField] private float leftWall;
+    [SerializeField] private float rightWall;
+    [SerializeField] private float ceiling;
+    [SerializeField] private float ground;
+
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
     private float checkTimer;
     private bool attacking;
-
-    [Header("Sound")]
-    [SerializeField] private AudioClip impactSound;
 
     private void OnEnable() {
         Stop();
@@ -30,11 +36,8 @@ public class SpikeHead : EnemyDamage
         }
         else {
             checkTimer += Time.deltaTime;
-            if (checkTimer >= checkDelay) {
+            if (checkTimer > checkDelay) {
                 CheckForPlayer();
-                if (Vector3.Distance(transform.position, destination) <= range) {
-                    destination = -destination;
-                }
             }
         }
     }
@@ -54,8 +57,6 @@ public class SpikeHead : EnemyDamage
         
             if (hit.collider != null && !attacking) {
                 destination = directions[i];
-                Debug.Log("destination: " + i);
-                Debug.Log("direction: " + directions[i]);
                 attacking = true;
                 checkTimer = 0;
             }
@@ -68,9 +69,11 @@ public class SpikeHead : EnemyDamage
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        SoundManager.instance.PlaySound(impactSound);
-        base.OnTriggerEnter2D(other);
-        Stop();
+        if (other.tag != "Fireball" || other.tag != "Coin" && other.tag != "Checkpoint" && other.tag != "NextRoomSign" && other.tag != "Enemy") {
+            SoundManager.instance.PlaySound(impactSound);
+            base.OnTriggerEnter2D(other);
+            Stop();
+        }
     }
 
     public void ResetTrap() {
