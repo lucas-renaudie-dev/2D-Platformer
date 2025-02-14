@@ -69,7 +69,7 @@ public class SpikeHead : EnemyDamage
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag != "Fireball" || other.tag != "Coin" && other.tag != "Checkpoint" && other.tag != "NextRoomSign" && other.tag != "Enemy") {
+        if (other.tag != "Fireball" && other.tag != "Coin" && other.tag != "Checkpoint" && other.tag != "NextRoomSign" && other.tag != "Enemy") {
             SoundManager.instance.PlaySound(impactSound);
             base.OnTriggerEnter2D(other);
             Stop();
