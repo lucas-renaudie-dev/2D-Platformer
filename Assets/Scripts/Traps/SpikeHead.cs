@@ -69,7 +69,21 @@ public class SpikeHead : EnemyDamage
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag != "Fireball" && other.tag != "Coin" && other.tag != "Checkpoint" && other.tag != "NextRoomSign" && other.tag != "Enemy") {
+        // Compare tags
+        bool isFireball    = other.CompareTag("Fireball");
+        bool isCoin        = other.CompareTag("Coin");
+        bool isCheckpoint  = other.CompareTag("Checkpoint");
+        bool isNextRoom    = other.CompareTag("NextRoomSign");
+        bool isEnemy       = other.CompareTag("Enemy");
+        bool isDoor        = other.CompareTag("Door");
+
+        // Compare layers by using NameToLayer, which returns an int
+        bool isGround      = other.gameObject.layer == LayerMask.NameToLayer("Ground");
+        bool isWall        = other.gameObject.layer == LayerMask.NameToLayer("Wall");
+
+        // If it's *not* any of those tags or layers, then do something
+        if (!isFireball && !isCoin && !isCheckpoint && !isNextRoom && !isEnemy 
+            && !isGround && !isWall && !isDoor) {
             SoundManager.instance.PlaySound(impactSound);
             base.OnTriggerEnter2D(other);
             Stop();
