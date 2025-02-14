@@ -11,11 +11,9 @@ public class SpikeHead : EnemyDamage
     [Header("Sound")]
     [SerializeField] private AudioClip impactSound;
 
-    [Header("Thresholds")]
-    [SerializeField] private float leftWall;
-    [SerializeField] private float rightWall;
-    [SerializeField] private float ceiling;
-    [SerializeField] private float ground;
+    [Header("Movement Type")]
+    [SerializeField] private bool isHorizontal;
+    [SerializeField] private bool isVertical;
 
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
@@ -43,10 +41,20 @@ public class SpikeHead : EnemyDamage
     }
 
     private void CalculateDirections() {
-        directions[0] = transform.right * range;
-        directions[1] = -transform.right * range;
-        directions[2] = transform.up * range;
-        directions[3] = -transform.up * range;
+        if (isVertical) {
+            directions[0] = transform.up * range;
+            directions[1] = -transform.up * range;
+        }
+        else if (isHorizontal) {
+            directions[0] = transform.right * range;
+            directions[1] = -transform.right * range;
+        }
+        else {
+            directions[0] = transform.right * range;
+            directions[1] = -transform.right * range;
+            directions[2] = transform.up * range;
+            directions[3] = -transform.up * range;
+        }
     }
 
     private void CheckForPlayer() {
