@@ -53,6 +53,9 @@ TagManager:
   - name: Background
     uniqueID: 2696828801
     locked: 0
+  - name: Collectibles
+    uniqueID: 3406988173
+    locked: 0
   - name: ForeGround
     uniqueID: 3006156873
     locked: 0
