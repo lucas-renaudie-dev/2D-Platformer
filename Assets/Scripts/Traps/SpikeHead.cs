@@ -20,6 +20,8 @@ public class SpikeHead : EnemyDamage
     private float checkTimer;
     private bool attacking;
 
+    private Vector3 previousLocation;
+
     private void OnEnable() {
         Stop();
     }
@@ -41,13 +43,13 @@ public class SpikeHead : EnemyDamage
     }
 
     private void CalculateDirections() {
-        if (isVertical) {
-            directions[0] = transform.up * range;
-            directions[1] = -transform.up * range;
-        }
-        else if (isHorizontal) {
+        if (isHorizontal) {
             directions[0] = transform.right * range;
             directions[1] = -transform.right * range;
+        }
+        else if (isVertical) {
+            directions[0] = transform.up * range;
+            directions[1] = -transform.up * range;
         }
         else {
             directions[0] = transform.right * range;
@@ -74,6 +76,7 @@ public class SpikeHead : EnemyDamage
     private void Stop() {
         destination = transform.position;
         attacking = false;
+        previousLocation = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -92,10 +95,19 @@ public class SpikeHead : EnemyDamage
         // If it's *not* any of those tags or layers, then do something
         if (!isFireball && !isCoin && !isCheckpoint && !isNextRoom && !isEnemy 
             && !isGround && !isWall && !isDoor) {
-            SoundManager.instance.PlaySound(impactSound);
+            if (transform.position != previousLocation) {
+                SoundManager.instance.PlaySound(impactSound);
+            }
             base.OnTriggerEnter2D(other);
-            Stop();
+            Stop();   
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (transform.position != previousLocation) {
+            SoundManager.instance.PlaySound(impactSound);
+        }
+        Stop(); 
     }
 
     public void ResetTrap() {
