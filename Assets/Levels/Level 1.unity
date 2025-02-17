@@ -21813,6 +21813,14 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6217168852205811923, guid: 07b0785086bf0f34194ffe2daa7d6843, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
+    - target: {fileID: 6217168852205811923, guid: 07b0785086bf0f34194ffe2daa7d6843, type: 3}
+      propertyPath: levelCompleteSign
+      value: 
+      objectReference: {fileID: 2064739586}
     - target: {fileID: 7588810676364214980, guid: 07b0785086bf0f34194ffe2daa7d6843, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.54

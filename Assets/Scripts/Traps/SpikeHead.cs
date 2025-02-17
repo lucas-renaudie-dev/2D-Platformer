@@ -15,6 +15,10 @@ public class SpikeHead : EnemyDamage
     [SerializeField] private bool isHorizontal;
     [SerializeField] private bool isVertical;
 
+    [Header("Level Complete Screen")]
+    [SerializeField] LevelComplete levelCompleteSign;
+    private Health playerHealth;
+
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
     private float checkTimer;
@@ -26,18 +30,24 @@ public class SpikeHead : EnemyDamage
         Stop();
     }
 
+    private void Awake() {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>(); 
+    }
+
     private void Start() {
         checkTimer = checkDelay;
     }
 
     private void Update() {
-        if (attacking) {
-            transform.Translate(destination * speed * Time.deltaTime);
-        }
-        else {
-            checkTimer += Time.deltaTime;
-            if (checkTimer > checkDelay) {
-                CheckForPlayer();
+        if (playerHealth.currentHealth > 0 && !levelCompleteSign.signPassed) {
+            if (attacking) {
+                transform.Translate(destination * speed * Time.deltaTime);
+            }
+            else {
+                checkTimer += Time.deltaTime;
+                if (checkTimer > checkDelay) {
+                    CheckForPlayer();
+                }   
             }
         }
     }
