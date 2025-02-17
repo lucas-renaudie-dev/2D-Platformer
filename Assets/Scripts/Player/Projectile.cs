@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag != "Player" && collision.tag != "Fireball" && collision.tag != "Coin" && collision.tag != "Checkpoint" && collision.tag != "NextRoomSign") {
+        if (collision.tag != "Player" && collision.tag != "Fireball" && collision.tag != "Coin" && collision.tag != "Checkpoint" && collision.tag != "LevelComplete" && collision.tag != "NextRoomSign") {
             hit = true;
             boxCollider.enabled = false;
         

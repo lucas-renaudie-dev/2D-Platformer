@@ -34,7 +34,7 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Checkpoint") {
+        if (other.gameObject.tag == "Checkpoint" && playerHealth.currentHealth > 0) {
             currentCheckpoint = other.gameObject;
             SoundManager.instance.PlaySound(checkpointSound);
             other.GetComponent<Collider2D>().enabled = false;

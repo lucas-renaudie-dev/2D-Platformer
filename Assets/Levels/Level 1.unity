@@ -4746,7 +4746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751703921858638538, guid: d068ee930efb8be449b8f44d63cd9032, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.62
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 4751703921858638538, guid: d068ee930efb8be449b8f44d63cd9032, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6761,7 +6761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675323235810237407, guid: 72c78130057671547b9827bf0a62153d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.505
+      value: 1.475
       objectReference: {fileID: 0}
     - target: {fileID: 6675323235810237407, guid: 72c78130057671547b9827bf0a62153d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15157,6 +15157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowTrapDown
       objectReference: {fileID: 0}
+    - target: {fileID: 3082696147940119602, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 2064739586}
     - target: {fileID: 3587507848728902409, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.11
@@ -24036,7 +24040,7 @@ GameObject:
   - component: {fileID: 2064739585}
   m_Layer: 0
   m_Name: Level Complete Sign
-  m_TagString: Checkpoint
+  m_TagString: LevelComplete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25587,7 +25591,7 @@ PrefabInstance:
     - target: {fileID: 93383648451283794, guid: a817a20859db6534695a90e899f4bcdf, type: 3}
       propertyPath: checkpointSound
       value: 
-      objectReference: {fileID: 8300000, guid: bba9490f8f0a1bf4b84e828ee956dbc6, type: 3}
+      objectReference: {fileID: 8300000, guid: cade9295367e4514b801a62048b99a2e, type: 3}
     - target: {fileID: 1018719696467778160, guid: a817a20859db6534695a90e899f4bcdf, type: 3}
       propertyPath: m_Material
       value: 

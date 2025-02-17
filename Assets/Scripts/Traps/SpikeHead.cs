@@ -94,6 +94,7 @@ public class SpikeHead : EnemyDamage
         bool isFireball    = other.CompareTag("Fireball");
         bool isCoin        = other.CompareTag("Coin");
         bool isCheckpoint  = other.CompareTag("Checkpoint");
+        bool isLevelComp   = other.CompareTag("LevelComplete");
         bool isNextRoom    = other.CompareTag("NextRoomSign");
         bool isEnemy       = other.CompareTag("Enemy");
         bool isDoor        = other.CompareTag("Door");
@@ -103,7 +104,7 @@ public class SpikeHead : EnemyDamage
         bool isWall        = other.gameObject.layer == LayerMask.NameToLayer("Wall");
 
         // If it's *not* any of those tags or layers, then do something
-        if (!isFireball && !isCoin && !isCheckpoint && !isNextRoom && !isEnemy 
+        if (!isFireball && !isCoin && !isCheckpoint && !isLevelComp && !isNextRoom && !isEnemy 
             && !isGround && !isWall && !isDoor) {
             if (transform.position != previousLocation) {
                 SoundManager.instance.PlaySound(impactSound);
