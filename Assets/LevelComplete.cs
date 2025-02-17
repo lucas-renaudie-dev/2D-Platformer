@@ -26,6 +26,7 @@ public class LevelComplete : MonoBehaviour
 
             other.GetComponent<Health>().DeactivateComponents();
             other.GetComponent<Animator>().SetBool("run", false);
+            other.GetComponent<Rigidbody2D>().linearDamping = 5f;
             Physics2D.IgnoreLayerCollision(9, 10, true);
             levelCompleteScreen.SetActive(true);
         }

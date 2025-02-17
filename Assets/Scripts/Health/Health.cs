@@ -63,6 +63,7 @@ public class Health : MonoBehaviour
                      GetComponent<PlayerRespawn>().StartRespawn();
                   }
                   else {
+                     GetComponent<Rigidbody2D>().linearDamping = 5f;
                      Physics2D.IgnoreLayerCollision(9, 10, true);
                      uiManager.GameOver();
                   }
