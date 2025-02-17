@@ -69,6 +69,9 @@ public class Health : MonoBehaviour
                }
 
                else { //Enemy death
+                  if (GetComponent<EnemySideways>() != null) { //if enemy is a ghost
+                     transform.position = new Vector3 (transform.position.x, transform.position.y + 0.52f, transform.position.z); //for death animation
+                  }
                   DisableCollisionWithPlayer(GetComponent<Collider2D>());
                   anim.SetTrigger("dead");
                   dead = true;
