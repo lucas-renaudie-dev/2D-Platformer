@@ -4604,6 +4604,7 @@ MonoBehaviour:
   - {fileID: 125482442}
   - {fileID: 1895625056}
   - {fileID: 1122580750}
+  - {fileID: 1207014612}
 --- !u!61 &289888969
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7020,6 +7021,7 @@ MonoBehaviour:
   - {fileID: 125482442}
   - {fileID: 1895625056}
   - {fileID: 1122580750}
+  - {fileID: 1207014612}
   firstRoom: {fileID: 920305184}
 --- !u!1 &583409403
 GameObject:
@@ -15203,6 +15205,11 @@ PrefabInstance:
 --- !u!4 &1207014611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3587507848728902409, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
+  m_PrefabInstance: {fileID: 1207014610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1207014612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1226775004494044182, guid: 4e6ddf03886152945848a3e9a63f6e12, type: 3}
   m_PrefabInstance: {fileID: 1207014610}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223695585
@@ -25577,6 +25584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93383648451283794, guid: a817a20859db6534695a90e899f4bcdf, type: 3}
+      propertyPath: checkpointSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bba9490f8f0a1bf4b84e828ee956dbc6, type: 3}
     - target: {fileID: 1018719696467778160, guid: a817a20859db6534695a90e899f4bcdf, type: 3}
       propertyPath: m_Material
       value: 
