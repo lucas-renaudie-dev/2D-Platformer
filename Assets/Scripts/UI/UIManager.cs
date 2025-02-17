@@ -24,11 +24,11 @@ public class UIManager : MonoBehaviour
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape) && !gameOverScreen.activeInHierarchy) {
             if (pauseScreen.activeInHierarchy) {
-                SoundManager.instance.PlaySound(pauseSound); //SoundManager.instance.PlaySound(unpauseSound);
+                //SoundManager.instance.PlaySound(pauseSound); //SoundManager.instance.PlaySound(unpauseSound);
                 PauseGame(false);
             }
             else {
-                SoundManager.instance.PlaySound(pauseSound);
+                //SoundManager.instance.PlaySound(pauseSound);
                 PauseGame(true);    
             }
         }
