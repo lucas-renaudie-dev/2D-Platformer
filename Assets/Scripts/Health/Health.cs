@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
    public float currentHealth { get; private set; }
    private Animator anim;
    private bool dead;
-   public LogicManager logic;
 
    [Header("iFrames")]
    [SerializeField] private float iFramesDuration;

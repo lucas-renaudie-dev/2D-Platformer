@@ -97,7 +97,7 @@ public class EnemySideways : MonoBehaviour
             ghostScale = -ghostScale;
         }
 
-        if (ghostScale == -1) {
+        if (ghostScale < 0) {
             transform.position = transform.position + (Vector3.left * speed) * Time.deltaTime;
         }
         else {
@@ -114,5 +114,9 @@ public class EnemySideways : MonoBehaviour
     public void ResetTrap() {
         timer = 0;
         ghostScale = -1;
+    }
+
+    private void DeactivateObject() {
+        gameObject.SetActive(false);
     }
 }
