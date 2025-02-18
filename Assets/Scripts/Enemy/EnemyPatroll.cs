@@ -11,6 +11,7 @@ public class EnemyPatroll : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float speed;
+    [SerializeField] private bool StartMovingLeft;
     private bool isMovingLeft;
 
     [Header("Idle Behavior")]
@@ -21,7 +22,7 @@ public class EnemyPatroll : MonoBehaviour
     [SerializeField] private Animator anim;
 
     private void Start() {
-        isMovingLeft = true;
+        isMovingLeft = StartMovingLeft;
     }
 
     private void OnDisable() {
@@ -73,6 +74,6 @@ public class EnemyPatroll : MonoBehaviour
 
     public void ResetTrap() {
         idleTime = 0;
-        isMovingLeft = true;
+        isMovingLeft = StartMovingLeft;
     }
 }
