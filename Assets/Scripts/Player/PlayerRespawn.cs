@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private CoinScript coinScript;
     private GameObject currentCheckpoint;
     private Health playerHealth;
     public bool checkpointExists = false;
@@ -22,6 +24,10 @@ public class PlayerRespawn : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         playerHealth.Respawn();
 
+        coinScript.currentCoins = currentCheckpoint.GetComponent<Checkpoint>().coins;
+        coinScript.AddCoin(0);
+        currentCheckpoint.GetComponent<Checkpoint>().ResetCoins();
+
         currentCheckpoint.GetComponent<Checkpoint>().ResetTraps();
 
         Transform checkpointRoom = currentCheckpoint.transform.parent.parent; 
@@ -36,6 +42,7 @@ public class PlayerRespawn : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Checkpoint" && playerHealth.currentHealth > 0) {
             currentCheckpoint = other.gameObject;
+            currentCheckpoint.GetComponent<Checkpoint>().coins = coinScript.currentCoins;
             SoundManager.instance.PlaySound(checkpointSound);
             other.GetComponent<Collider2D>().enabled = false;
             other.GetComponent<Animator>().SetTrigger("checkpointPassed");

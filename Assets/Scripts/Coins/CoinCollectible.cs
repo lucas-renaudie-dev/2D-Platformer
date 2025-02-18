@@ -8,7 +8,7 @@ public class CoinCollectible : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Player") {
             SoundManager.instance.PlaySound(pickupSound);
-            gameObject.GetComponentInParent<CoinScript>().AddCoin();
+            gameObject.GetComponentInParent<CoinScript>().AddCoin(1);
             gameObject.SetActive(false);
         }
     }

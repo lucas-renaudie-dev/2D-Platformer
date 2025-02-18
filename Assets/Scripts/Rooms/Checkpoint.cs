@@ -7,6 +7,8 @@ public class Checkpoint : MonoBehaviour
     public GameObject[] signs;
     public GameObject[] enemiesInCheckpointRoom; //including those in checkpoint room
     public GameObject[] enemiesAfterCheckpointRoom; //including those in checkpoint room
+    public GameObject[] coinsAfterCheckpointRoom;
+    public int coins;
 
     private void Awake() {
         string diff = DifficultyScript.Instance.currentDifficulty;
@@ -16,6 +18,14 @@ public class Checkpoint : MonoBehaviour
         else 
             gameObject.SetActive(false);
     }
+
+    //--------------------------------------------- COIN RESET ---------------------------------------------------------------------------------------------------------------------
+    public void ResetCoins() { 
+        for (int i = 0; i < coinsAfterCheckpointRoom.Length; i++) {
+            coinsAfterCheckpointRoom[i].SetActive(true);
+        }
+    }
+
     //--------------------------------------------- DOOR RESET ---------------------------------------------------------------------------------------------------------------------
     public void ResetDoors() { 
         for (int i = 0; i < doors.Length; i++) {
