@@ -11,15 +11,24 @@ public class EnemySideways : MonoBehaviour
     [SerializeField] private float speed = 3;
     private float timer = 0;
     private float ghostScale = -1;
+    private Health playerHealth;
+    private LevelComplete victory;
+
+    private void Awake() {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        victory = GameObject.FindGameObjectWithTag("LevelComplete").GetComponent<LevelComplete>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (isSaw) {
-            IsSaw();
-        }
-        else {
-            IsGhost();
+        if (!victory.signPassed) {
+            if (isSaw) {
+                IsSaw();
+            }
+            else {
+                IsGhost();
+            }
         }
     }
 

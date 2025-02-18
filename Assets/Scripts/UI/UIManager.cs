@@ -101,8 +101,8 @@ public class UIManager : MonoBehaviour
     public void MainMenu() {
         SoundManager.instance.StopMusic();
         SoundManager.instance.PlayMenuMusic();
-        SceneManager.LoadScene(0);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     public void Quit() {
