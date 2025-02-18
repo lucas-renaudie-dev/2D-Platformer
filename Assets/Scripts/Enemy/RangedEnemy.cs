@@ -54,9 +54,23 @@ public class RangedEnemy : MonoBehaviour
     private void RangedAttack() {
         SoundManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
+
         int tmp = FindFireball();
-        fireballs[tmp].transform.position = firePoint.position;
-        fireballs[tmp].GetComponent<EnemyProjectile>().ActivateProjectile();   
+
+        // Grab the pooled fireball
+        GameObject fb = fireballs[tmp];
+
+        // Move it to the fire point
+        fb.transform.position = firePoint.position;
+
+        // Detach the fireball from the enemy's hierarchy so it won't flip mid-flight
+        fb.transform.SetParent(null);
+
+        // Optionally match the rotation of firePoint if you want forward direction
+        fb.transform.rotation = firePoint.rotation;
+
+        // Activate the projectile
+        fb.GetComponent<EnemyProjectile>().ActivateProjectile();   
     }
 
     private int FindFireball() {
