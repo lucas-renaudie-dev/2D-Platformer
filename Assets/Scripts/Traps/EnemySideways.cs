@@ -1,6 +1,4 @@
 using System;
-using JetBrains.Annotations;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemySideways : MonoBehaviour
