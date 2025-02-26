@@ -2,8 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Enemy
+  - Coin
+  - Ground
+  - Spikes
+  - Logic
+  - Fireball
+  - Door
+  - Checkpoint
+  - NextRoomSign
+  - LevelComplete
   layers:
   - Default
   - TransparentFX
@@ -12,12 +22,12 @@ TagManager:
   - Water
   - UI
   - 
+  - Ground
+  - Wall
+  - Player
+  - Enemy
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - TrapPerimeter
   - 
   - 
   - 
@@ -41,3 +51,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2696828801
+    locked: 0
+  - name: Collectibles
+    uniqueID: 3406988173
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3006156873
+    locked: 0
+  - name: Player
+    uniqueID: 4186460851
+    locked: 0
+  - name: Ground
+    uniqueID: 2504804145
+    locked: 0
+  m_RenderingLayers:
+  - Default
